@@ -21,6 +21,7 @@ gem 'activeadmin'
 gem "cancan"
 gem "devise"
 gem "figaro"
+gem 'client_side_validations'
 
 group :production do
   gem 'pg', '0.15.1'
