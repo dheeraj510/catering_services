@@ -13,4 +13,15 @@ ActiveAdmin.register User do
     end
     f.actions
   end
+
+
+  index do
+    column :name
+    column :email
+    column :phone_number
+    column :address
+    default_actions
+  end
+
+
 end
