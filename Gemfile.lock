@@ -173,6 +173,7 @@ DEPENDENCIES
   activeadmin
   cancan
   coffee-rails (~> 3.2.1)
+  devise
   jquery-rails (~> 2.3.0)
   less-rails
   pg (= 0.15.1)

@@ -19,6 +19,7 @@ gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) support
 gem "twitter-bootstrap-rails"
 gem 'activeadmin'
 gem "cancan"
+gem "devise"
 
 group :production do
   gem 'pg', '0.15.1'
