@@ -8,7 +8,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :address
       t.integer :phone_number
       t.integer :alternate_number
-      t.id :booking_id
+      t.integer :booking_id
 
 
       ## Recoverable

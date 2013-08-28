@@ -20,6 +20,7 @@ gem "twitter-bootstrap-rails"
 gem 'activeadmin'
 gem "cancan"
 gem "devise"
+gem "figaro"
 
 group :production do
   gem 'pg', '0.15.1'
