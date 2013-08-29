@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(:version => 20130829090005) do
     t.datetime "updated_at",                             :null => false
     t.string   "provider"
     t.string   "facebook_uid"
+    t.string   "twitter_uid"
     t.string   "linkedin_uid"
   end
 

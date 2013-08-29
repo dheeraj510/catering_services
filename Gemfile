@@ -26,6 +26,7 @@ gem 'client_side_validations'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-linkedin'
+gem 'omniauth-twitter'
 
 group :production do
   gem 'pg', '0.15.1'

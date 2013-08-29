@@ -222,7 +222,9 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
   require "omniauth-facebook"
   require "omniauth-linkedin"
+  require "omniauth-twitter"
   config.omniauth :facebook, ENV["FB_APP_ID"], ENV["FB_APP_SECRET"]
+  config.omniauth :twitter, ENV["TW_APP_ID"], ENV["TW_APP_SECRET"]
   config.omniauth :linkedin,ENV['LN_APP_ID'], ENV['LN_APP_SECRET'],
                      client_options: {request_token_path: '/uas/oauth/requestToken?scope=r_emailaddress+r_contactinfo'},
                      :fields => ['id', 'first-name', 'last-name', 'headline', 'industry', 'picture-url', 'public-profile-url','email-address',
