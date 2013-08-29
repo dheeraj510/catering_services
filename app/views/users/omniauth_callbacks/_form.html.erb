@@ -1,29 +1,125 @@
-<div class="control-group">
-  <label for="First Name" class="control-label">
- Name
-  </label>
-  <div class="controls">
-    <%= f.text_field :name %>
-  </div>
-</div>
-</div>
-<div class="control-group">
-  <label for="email" class="control-label">
-    E-Mail
-  </label>
-  <div class="controls">
-    <%= f.text_field :email%>
-  </div>
-</div>
 
-<div class="control-group">
-  <label for="MObile Number" class="control-label">
-    Phone Number
-  </label>
-  <div class="controls">
-    <%= f.text_field :phone_number %>
-  </div>
-</div>
-<div class="form-actions" style="background-color:#ffffff">
-  <%= f.submit "Submit", :class=>"btn btn-large btn-primary" %>
-</div>
+    <fieldset>
+      <!-- Address form -->
+
+      <br/>
+      <!-- full-name input-->
+      <div class="control-group">
+        <label class="control-label">Full Name </label>
+        <div class="controls">
+          <%= f.text_field :name,
+                           :validate => true,
+                           :type => "text",
+                           :placeholder =>"full name",
+                           :class => "input-xlarge",
+                           :readonly => true%>
+          <p class="help-block"></p>
+        </div>
+      </div>
+
+      <% if params[:action] == "twitter" %>
+          <div class="control-group">
+            <label class="control-label">Email</label>
+            <div class="controls">
+
+              <%= f.email_field :email,
+                                :validate => true,
+                                :type => "text",
+                                :placeholder =>"email",
+                                :class => "input-xlarge"%></div>
+          </div>
+      <% else %>
+          <div class="control-group">
+            <label class="control-label">Email</label>
+            <div class="controls">
+
+              <%= f.email_field :email,
+                                :validate => true,
+                                :type => "text",
+                                :placeholder =>"email",
+                                :class => "input-xlarge",
+                                :readonly => true %></div>
+          </div>
+      <% end %>
+      <div class="control-group">
+        <label class="control-label">Mobile Number</label>
+        <div class="controls">
+          <%= f.text_field :phone_number,
+                           :validate => true,
+                           :type => "text",
+                           :placeholder =>"mobile number",
+                           :class => "input-xlarge" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Alternate Phone Number</label>
+        <div class="controls">
+          <%= f.text_field :alternate_number,
+                           :validate => true,
+                           :type => "text",
+                           :placeholder =>"alternate phone number",
+                           :class => "input-xlarge" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Address</label>
+        <div class="controls">
+          <%= f.text_field :address,
+                           :validate => true,
+                           :type => "text",
+                           :placeholder =>"address",
+                           :class => "input-xlarge" %>
+        </div>
+      </div>
+      <!-- city input-->
+      <div class="control-group">
+        <label class="control-label">City / Town</label>
+        <div class="controls">
+          <%= f.text_field :city,
+                           :validate => true,
+                           :type => "text",
+                           :placeholder =>"city",
+                           :class => "input-xlarge" %>
+          <p class="help-block"></p>
+        </div>
+      </div>
+      <!-- region input-->
+      <div class="control-group">
+        <label class="control-label">State / Province / Region</label>
+        <div class="controls">
+          <%= f.text_field :state,
+                           :validate => true,
+                           :type => "text",
+                           :placeholder =>"state",
+                           :class => "input-xlarge" %>
+          <p class="help-block"></p>
+        </div>
+      </div>
+      <!-- postal-code input-->
+      <div class="control-group">
+        <label class="control-label">Zip / Postal Code</label>
+        <div class="controls">
+          <%= f.text_field :zipcode,
+                           :validate => true,
+                           :type => "text",
+                           :placeholder =>"zipcode",
+                           :class => "input-xlarge" %>
+          <p class="help-block"></p>
+        </div>
+      </div>
+      <!-- country select -->
+      <div class="control-group">
+        <label class="control-label">Country</label>
+        <div class="controls">
+          <%= f.text_field :country,
+                           :validate => true,
+                           :type => "text",
+                           :placeholder =>"Please select the country",
+                           :class => "input-xlarge" %>
+        </div>
+      </div>
+
+    </fieldset>
+    <div><%= f.submit "Sign up" ,class: "btn btn-large btn-block btn-success" %></div>
+
+

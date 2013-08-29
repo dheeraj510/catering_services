@@ -60,9 +60,13 @@ ActiveRecord::Schema.define(:version => 20130829090005) do
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "name"
-    t.string   "address"
     t.integer  "phone_number"
     t.integer  "alternate_number"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zipcode"
+    t.string   "country"
     t.integer  "booking_id"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"

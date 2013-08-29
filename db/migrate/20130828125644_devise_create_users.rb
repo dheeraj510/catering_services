@@ -5,9 +5,13 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :email,              :null => false, :default => ""
       t.string :encrypted_password, :null => false, :default => ""
       t.string :name
-      t.string :address
       t.integer :phone_number
       t.integer :alternate_number
+      t.string :address
+      t.string :city
+      t.string :state
+      t.string :zipcode
+      t.string :country
       t.integer :booking_id
 
 

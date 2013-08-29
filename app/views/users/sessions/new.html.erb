@@ -1,17 +1,41 @@
-<h2>Sign in</h2>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name),:html => {:class => "form-horizontal"}) do |f| %>
+    <fieldset>
+      <!-- Address form -->
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+      <h2 class="text-info"> SIGN IN</h2>
+      <br/>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
+      <div class="control-group">
+        <label class="icon-large icon-user control-label"> </label>
+        <div class="controls">
+          <%= f.email_field :email,:autofocus => true,
+                            :type => "text",
+                            :placeholder =>"email",
+                            :class => "input-xlarge" %></div>
+      </div>
+      <div class="control-group">
+        <label class=" icon-large icon-lock control-label"> </label>
+        <div class="controls">
+          <%= f.password_field :password,
+                               :type => "password",
+                               :placeholder =>"password",
+                               :class => "input-xlarge" %>
+        </div>
+      </div>
 
-  <div><%= f.submit "Sign in" %></div>
+
+    </fieldset>
+    <div><%= f.submit "Sign in" ,class: "btn btn-block btn-success" %></div>
+
 <% end %>
 
-<%= render "users/shared/links" %>
+
+
+<%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
+  <%= link_to "  Forgot your password?", new_password_path(resource_name), class: " icon-question" %><br />
+<% end -%>
+
+<%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+  <%= link_to " Didn't receive confirmation instructions?", new_confirmation_path(resource_name),class: " icon-warning-sign" %><br />
+<% end -%>

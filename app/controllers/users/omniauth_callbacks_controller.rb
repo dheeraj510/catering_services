@@ -1,5 +1,5 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  layout 'home'
+  layout 'user'
 
   def facebook
     # You need to implement the method below in your model
