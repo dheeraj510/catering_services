@@ -1,0 +1,29 @@
+<div class="control-group">
+  <label for="First Name" class="control-label">
+ Name
+  </label>
+  <div class="controls">
+    <%= f.text_field :name %>
+  </div>
+</div>
+</div>
+<div class="control-group">
+  <label for="email" class="control-label">
+    E-Mail
+  </label>
+  <div class="controls">
+    <%= f.text_field :email%>
+  </div>
+</div>
+
+<div class="control-group">
+  <label for="MObile Number" class="control-label">
+    Phone Number
+  </label>
+  <div class="controls">
+    <%= f.text_field :phone_number %>
+  </div>
+</div>
+<div class="form-actions" style="background-color:#ffffff">
+  <%= f.submit "Submit", :class=>"btn btn-large btn-primary" %>
+</div>
