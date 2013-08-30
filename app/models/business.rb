@@ -7,7 +7,8 @@ class Business < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-                  :paln_id
+                  :name, :address, :phone_number, :alternate_number,
+                  :state, :country, :zipcode, :city, :plan_id
   # attr_accessible :title, :body
   validates :name, presence: {message: "Name should be present"}
   validates :phone_number, presence: true

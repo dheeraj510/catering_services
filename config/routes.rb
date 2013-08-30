@@ -20,6 +20,10 @@ CateringServices::Application.routes.draw do
   devise_for :businesses ,:controllers=>{:sessions => 'businesses/sessions',
                                     :registrations => 'businesses/registrations'}
 
+  match 'membership', to: 'plans#membership'
+
   root :to => 'home#index'
+
+
 
 end

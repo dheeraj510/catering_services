@@ -1,0 +1,14 @@
+<ul class="thumbnails">
+  <% @plan.each do |plan| %>
+  <li class="span4">
+    <div class="thumbnail">
+      <img src="http://placehold.it/320x200" alt="ALT NAME">
+      <div class="caption">
+        <h3><%= plan.membership %> Plan</h3>
+        <p>Description</p>
+        <p align="center"><%= link_to "Choose Plan",new_business_registration_path(:plan=> plan) , :class=>"btn btn-primary btn-block" %></p>
+      </div>
+    </div>
+  </li>
+   <% end %>
+</ul>

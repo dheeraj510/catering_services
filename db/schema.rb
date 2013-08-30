@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(:version => 20130830094831) do
   add_index "businesses", ["reset_password_token"], :name => "index_businesses_on_reset_password_token", :unique => true
 
   create_table "plans", :force => true do |t|
-    t.string   "type"
+    t.string   "membership"
     t.integer  "price"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
