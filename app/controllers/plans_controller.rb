@@ -1,5 +1,5 @@
 class PlansController < ApplicationController
-  layout 'business'
+  layout 'home'
   def membership
     @plan = Plan.all
 =begin

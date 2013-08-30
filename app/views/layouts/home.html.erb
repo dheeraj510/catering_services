@@ -89,20 +89,13 @@
       <%= bootstrap_flash %>
       <%= yield %>
     </div>
-    <% if user_signed_in? %>
+    <% if user_signed_in? || business_signed_in? %>
     <% else %>
         <div class="span3">
           <div class="sidebar-nav">
-            <ul class="nav nav-list">
-              <span style= "color: #DD1144;">Login with </span>:&nbsp;
-
-              <%- resource_class.omniauth_providers.each do |provider| %>
-                  <%= link_to "",omniauth_authorize_path(resource_name, provider),
-                              :class=>"icon-large icon-#{provider.to_s}",
-                              :style=> "display: center"  %> &nbsp;
-              <% end -%>
-
-            </ul>
+            <% unless params[:controller] == 'businesses/sessions' %>
+            <%= render '/layouts/social_login' %>
+                <% end %>
           </div>
         </div>
     <% end %>

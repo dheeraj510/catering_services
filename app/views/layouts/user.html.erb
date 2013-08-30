@@ -103,28 +103,19 @@
 
 <div class="container-fluid">
   <div class="row-fluid">
-
+    <div class="span3">
+          <div class="sidebar-nav">
+            <ul class="nav nav-list bs-docs-sidenav">
+      <li class="active"><a href="/users/dashboard"><i class="icon-home"></i> Dashboard<i class="icon-chevron-right"></i></a></li>
+      <li><a href="/users/dashboard/<%= current_user.id %>/edit"><i class="icon-user"></i> Update Profile<i class="icon-chevron-right"></i></a></li>
+     <li><a href="/users/logout"  data-method="delete"><i class="icon-off"></i> Logout<i class="icon-chevron-right"></i></a></li>
+    </ul>
+          </div>
+        </div><!--/span-->
     <div class="span8">
       <%= bootstrap_flash %>
       <%= yield %>
     </div>
-    <% if user_signed_in? %>
-    <% else %>
-        <div class="span3">
-          <div class="sidebar-nav">
-            <ul class="nav nav-list">
-              <span style= "color: #DD1144;">Login with </span>:&nbsp;
-
-              <%- resource_class.omniauth_providers.each do |provider| %>
-                  <%= link_to "",omniauth_authorize_path(resource_name, provider),
-                              :class=>"icon-large icon-#{provider.to_s}",
-                              :style=> "display: center"  %> &nbsp;
-              <% end -%>
-
-            </ul>
-          </div>
-        </div>
-    <% end %>
   </div>
 </div><!--/row-->
 

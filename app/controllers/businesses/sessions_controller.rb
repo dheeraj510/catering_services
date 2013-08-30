@@ -1,5 +1,5 @@
 class Businesses::SessionsController < Devise::SessionsController
-  layout 'business'
+  layout 'home'
   # GET /resource/sign_in
   def new
     self.resource = build_resource(nil, :unsafe => true)

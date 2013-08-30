@@ -1,9 +1,9 @@
-<% if user_signed_in? %>
+<% if user_signed_in? || business_signed_in? %>
     <ul class="nav pull-right">
       <% if user_signed_in? %>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, <%= current_user.name %> <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li><%= link_to " Dashboard", "#" ,:class=>"icon-list-alt" %></li>
+              <li><%= link_to " Dashboard", users_dashboard_index_path ,:class=>"icon-list-alt" %></li>
               <li><%= link_to " History", "#" ,:class=>"icon-time" %></li>
               <li><%= link_to " Edit Profile", edit_user_registration_path(current_user) ,:class=>"icon-user" %></li>
               <li></li>
@@ -11,12 +11,22 @@
               <li> <%= link_to " Logout", destroy_user_session_path, :method => :delete,  :class=>"icon-off" %></li>
             </ul>
           </li>
-      <% else %>
-          <li><a href="/users/login" >Login  </a>
+      <% elsif business_signed_in? %>
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, <%= current_business.name %> <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to " Dashboard", "#" ,:class=>"icon-list-alt" %></li>
+              <li><%= link_to " History", "#" ,:class=>"icon-time" %></li>
+              <li><%= link_to " Edit Profile", "#" ,:class=>"icon-user" %></li>
+              <li></li>
+              <li class="divider"></li>
+              <li> <%= link_to " Logout", destroy_business_session_path, :method => :delete,  :class=>"icon-off" %></li>
+            </ul>
+          </li>
       <% end %>
     </ul>
 <% else %>
-    <li><%= link_to "Sign Up", new_user_registration_path %></li>
+    <li><%= link_to "Register User", new_user_registration_path %></li>
+    <li><%= link_to "Register Business", membership_path %></li>
     <li class="divider-vertical"></li>
     <li class="dropdown">
       <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
@@ -24,14 +34,14 @@
         <div id="index-tabs" >
           <ul class="nav nav-tabs">
             <li><a href="#tabs-1">User</a></li>
-           <li><a href="#tabs-2">Business</a></li>
+            <li><a href="#tabs-2">Business</a></li>
           </ul>
           <div id="tabs-1">
             <%= render '/layouts/user' %>
-         </div>
-         <div id="tabs-2">
-           <%= render '/layouts/business' %>
-         </div>
+          </div>
+          <div id="tabs-2">
+            <%= render '/layouts/business' %>
+          </div>
 
         </div>
 

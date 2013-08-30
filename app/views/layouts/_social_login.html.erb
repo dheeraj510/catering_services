@@ -1,0 +1,10 @@
+<ul class="nav nav-list">
+  <span style= "color: #DD1144;">Login with </span>:&nbsp;
+
+  <%- resource_class.omniauth_providers.each do |provider| %>
+      <%= link_to "",omniauth_authorize_path(resource_name, provider),
+                  :class=>"icon-large icon-#{provider.to_s}",
+                  :style=> "display: center"  %> &nbsp;
+  <% end -%>
+
+</ul>
