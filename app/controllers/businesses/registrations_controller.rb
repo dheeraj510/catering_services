@@ -1,6 +1,6 @@
 class Businesses::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
-  layout 'business'
+  layout 'home'
   def new
     @plan_id = params[:plan]
     @plan = Plan.find_by_id(@plan_id)

@@ -1,6 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
-  layout 'user'
+  layout 'home'
   def new
     resource = build_resource({})
     respond_with resource

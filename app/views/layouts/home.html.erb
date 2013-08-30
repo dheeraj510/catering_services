@@ -93,7 +93,7 @@
     <% else %>
         <div class="span3">
           <div class="sidebar-nav">
-            <% unless params[:controller] == 'businesses/sessions' %>
+            <% unless params[:controller] == 'businesses/sessions' || params[:controller] == 'businesses/registrations' || params[:controller] == 'plans' %>
             <%= render '/layouts/social_login' %>
                 <% end %>
           </div>
