@@ -17,6 +17,10 @@ CateringServices::Application.routes.draw do
 
   end
 
+  namespace :users do
+    resources :dashboard
+  end
+
   devise_for :businesses ,:controllers=>{:sessions => 'businesses/sessions',
                                     :registrations => 'businesses/registrations'}
 

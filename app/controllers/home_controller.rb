@@ -10,7 +10,7 @@ class HomeController < ApplicationController
     elsif business_signed_in?
       "business"
     else
-      "user"
+      "home"
     end
   end
 end

@@ -72,7 +72,7 @@ end
 
   def failure
     redirect_to root_path
-    flash[:notice] = "Could not authorize, please login again from facebook, linkedin or signup to continue"
+    flash[:notice] = "Could not authorize, please login again from twitter, facebook, linkedin or signup to continue"
   end
 
 end

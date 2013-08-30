@@ -15,3 +15,7 @@
 //= require twitter/bootstrap
 //= require rails.validations
 //= require_tree .
+
+$(document).ready(function () {
+    $("#index-tabs").tabs();
+})

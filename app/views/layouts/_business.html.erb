@@ -1,0 +1,23 @@
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <%= f.email_field :email,
+                      :autofocus => true,
+                      :style=>"margin-bottom: 15px;",
+                      :type=>"text",
+                      :placeholder=>"Business Email"  %>
+
+    <%= f.password_field :password,
+                         :style=>"margin-bottom: 15px;",
+                         :type=>"password",
+                         :placeholder=>"Password" %>
+    <% if devise_mapping.rememberable? -%>
+        <%= f.check_box :remember_me,
+                        :style=>"float: left; margin-right: 10px;",
+                        :type=>"checkbox" %>
+        <%= f.label :remember_me,
+                    :class=>"string optional" %>
+    <% end -%>
+    <%= f.submit "Sign in",
+                 :class=>"btn btn-success btn-block",
+                 :type=>"submit" %>
+
+<% end %>

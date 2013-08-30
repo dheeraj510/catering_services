@@ -2,7 +2,7 @@
     <fieldset>
       <!-- Address form -->
 
-      <h2 class="text-info"> SIGN IN</h2>
+      <h2 class="text-info">USER SIGN IN</h2>
       <br/>
 
 
@@ -33,9 +33,9 @@
 
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
-  <%= link_to "  Forgot your password?", new_password_path(resource_name), class: " icon-question" %><br />
+  <%= link_to "  Forgot your password?", new_password_path(resource_name), class: " icon-question" %><br /><br/>
 <% end -%>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-  <%= link_to " Didn't receive confirmation instructions?", new_confirmation_path(resource_name),class: " icon-warning-sign" %><br />
+  <%= link_to " Didn't receive confirmation instructions?", new_confirmation_path(resource_name),class: " icon-question" %><br />
 <% end -%>
