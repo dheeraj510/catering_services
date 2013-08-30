@@ -12,6 +12,7 @@ class DeviseCreateBusinesses < ActiveRecord::Migration
       t.string :state
       t.string :zipcode
       t.string :country
+      t.integer :plan_id
 
       ## Recoverable
       t.string   :reset_password_token

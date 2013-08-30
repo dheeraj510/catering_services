@@ -6,6 +6,12 @@ class Business < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me,
+                  :paln_id
   # attr_accessible :title, :body
+  validates :name, presence: {message: "Name should be present"}
+  validates :phone_number, presence: true
+  validates :plan_id, presence: true
+
+  has_one :plan
 end

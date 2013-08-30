@@ -1,8 +1,6 @@
 CateringServices::Application.routes.draw do
 
 
-  devise_for :businesses
-
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -17,8 +15,11 @@ CateringServices::Application.routes.draw do
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
     post 'users/auth/register'=>'users/omniauth_callbacks#create'
 
-
   end
+
+  devise_for :businesses ,:controllers=>{:sessions => 'businesses/sessions',
+                                    :registrations => 'businesses/registrations'}
+
   root :to => 'home#index'
 
 end
