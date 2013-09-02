@@ -15,4 +15,5 @@ class Business < ActiveRecord::Base
   validates :plan_id, presence: true
 
   has_one :plan
+  has_many :menus
 end

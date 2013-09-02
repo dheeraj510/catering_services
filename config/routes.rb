@@ -24,6 +24,10 @@ CateringServices::Application.routes.draw do
   devise_for :businesses ,:controllers=>{:sessions => 'businesses/sessions',
                                     :registrations => 'businesses/registrations'}
 
+  namespace :businesses do
+     resources :dashboard
+   end
+
   match 'membership', to: 'plans#membership'
 
   root :to => 'home#index'
