@@ -2,56 +2,7 @@
 <%= nested_form_for(@business,:validate => true, :url => create_menu_businesses_dashboard_path(@business), :html => { :method => :put, :class => "form-horizontal" }) do |ff| %>
     <%= devise_error_messages! %>
     <% ff.fields_for :menus do |f| %>
-        <fieldset>
-          <!-- Address form -->
-
-          <h2 class="text-info">Menu Item:</h2>
-          <br/>
-          <!-- full-name input-->
-          <div class="control-group">
-            <label class="control-label">Item Name</label>
-            <div class="controls">
-              <%= f.text_field :name,
-                               :validate => true,
-                               :type => "text",
-                               :placeholder =>"Item name",
-                               :class => "input-xlarge" %>
-              <p class="help-block"></p>
-            </div>
-          </div>
-
-          <div class="control-group">
-            <label class="control-label">Description</label>
-            <div class="controls">
-              <%= f.text_field :description,
-                               :validate => true,
-                               :type => "text",
-                               :placeholder =>"Item description",
-                               :class => "input-xlarge" %>
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label">Type</label>
-            <div class="controls">
-              <%= f.select :item_type,['Veg','Non-Veg'],
-                               :validate => true,
-                               :type => "Type",
-                               :prompt =>"Please Select ...",
-                               :class => "input-xlarge" %>
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label">Price</label>
-            <div class="controls">
-              <%= f.text_field :price,
-                               :validate => true,
-                               :type => "text",
-                               :placeholder =>"Amount",
-                               :class => "input-xlarge" %>
-            </div>
-          </div>
-          <%= f.link_to_remove "Remove this menu" %>
-        </fieldset>
+        <%= render 'form', :f => f %>
     <% end %>
     <p><%= ff.link_to_add "Add menu item", :menus %></p>
     <div><%= ff.submit "Update" %></div>

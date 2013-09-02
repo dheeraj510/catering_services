@@ -1,0 +1,55 @@
+<fieldset>
+  <!-- Address form -->
+  <% if params[:action] == "add_menu"  %>
+      <h2 class="text-info">Menu Item:</h2>
+  <% else %>
+      <h2 class="text-info">Edit Item:</h2>
+  <% end %>
+  <br/>
+  <!-- full-name input-->
+  <div class="control-group">
+    <label class="control-label">Item Name</label>
+    <div class="controls">
+      <%= f.text_field :name,
+                       :validate => true,
+                       :type => "text",
+                       :placeholder =>"Item name",
+                       :class => "input-xlarge" %>
+      <p class="help-block"></p>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label">Description</label>
+    <div class="controls">
+      <%= f.text_field :description,
+                       :validate => true,
+                       :type => "text",
+                       :placeholder =>"Item description",
+                       :class => "input-xlarge" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">Type</label>
+    <div class="controls">
+      <%= f.select :item_type,['Veg','Non-Veg'],
+                   :validate => true,
+                   :type => "Type",
+                   :prompt =>"Please Select ...",
+                   :class => "input-xlarge" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">Price</label>
+    <div class="controls">
+      <%= f.text_field :price,
+                       :validate => true,
+                       :type => "text",
+                       :placeholder =>"Amount",
+                       :class => "input-xlarge" %>
+    </div>
+  </div>
+  <% if params[:action] == "add_menu"  %>
+      <%= f.link_to_remove "Remove this menu" %>
+  <% end %>
+</fieldset>

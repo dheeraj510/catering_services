@@ -28,6 +28,9 @@ CateringServices::Application.routes.draw do
      resources :dashboard do
        get 'add_menu', :on => :collection
        put 'create_menu', :on => :member
+       get 'edit_menu', :on => :member
+       put 'update_menu', :on => :member
+       delete 'delete_menu', :on => :member
      end
    end
 

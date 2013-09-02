@@ -39,4 +39,28 @@ class Businesses::DashboardController < ApplicationController
     end
   end
 
+  def edit_menu
+    @menu = Menu.find(params[:id])
+  end
+
+  def update_menu
+    @menu = Menu.find(params[:id])
+    if @menu.update_attributes(params[:menu])
+      redirect_to(businesses_dashboard_index_path, :notice => 'Details updated successfully.')
+    else
+      redirect_to :back, :alert => 'Failed to update details.'
+    end
+  end
+
+  def delete_menu
+    @menu = Menu.find(params[:id])
+    if @menu.destroy
+      redirect_to(businesses_dashboard_index_path, :notice => 'Item deleted successfully.')
+    else
+      redirect_to :back, :alert => 'Failed to delete Item.'
+    end
+
+
+  end
+
 end

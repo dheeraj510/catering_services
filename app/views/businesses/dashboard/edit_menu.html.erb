@@ -1,0 +1,7 @@
+
+<%= form_for(@menu,:validate => true, :url => update_menu_businesses_dashboard_path(@menu), :html => {:method => :put, :class => "form-horizontal" }) do |f| %>
+    <%#= devise_error_messages! %>
+    <%= render 'form', :f => f %>
+    <div><%= f.submit "Update" %></div>
+<% end %>
+

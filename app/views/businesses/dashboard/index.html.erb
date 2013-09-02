@@ -25,8 +25,8 @@
           <td><%= m.item_type %></td>
           <td><%= m.price %></td>
           <td>
-            <a href="#"><i class="icon-pencil"></i></a>
-            <a href="#" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+            <%= link_to "", edit_menu_businesses_dashboard_path(m.id), :class=>"icon-pencil"%>
+            <%= link_to "", delete_menu_businesses_dashboard_path(m.id),:method => :delete, :class=>"icon-remove"%>
           </td>
           </tr>
 
@@ -69,9 +69,8 @@
        All Items
         <select multiple='multiple' class='tandem-select-src-select'>
           <% @menu.each do |m| %>
-            <option value="<%= m.name %>"><%= m.name %>(<%= m.item_type %>)-<%= m.price %></option>
+            <option value="<%= m.id %>"><%= m.name %>(<%= m.item_type %>)-<%= m.price %></option>
               <% end %>
-          <option value="xx">Your options go here...</option>
 
         </select>
     </div>
@@ -92,8 +91,8 @@
 
     <!-- Destination Div and Select Menu -->
     <div class='tandem-select-dst-div'>
-        Destination List
-        <select multiple='multiple' class='tandem-select-dst-select' id='san' name='san'></select>
+        Selected Items List
+        <select multiple='multiple' class='tandem-select-dst-select' id='selected-items' name='selected-menu'></select>
     </div>
 
 </div>
@@ -103,6 +102,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#san').tandemSelect();
+        $('#selected-items').tandemSelect();
+
     });
 </script>

@@ -1,6 +1,6 @@
 class Businesses::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
-  layout 'home'
+  layout :change_layout
   def new
     @plan_id = params[:plan]
     @plan = Plan.find_by_id(@plan_id)
@@ -26,6 +26,15 @@ class Businesses::RegistrationsController < Devise::RegistrationsController
     else
       clean_up_passwords resource
       respond_with resource
+    end
+  end
+
+
+  def change_layout
+    if params[:action] == 'edit' || 'update'
+      'business'
+    else
+      'home'
     end
   end
 end
