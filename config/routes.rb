@@ -25,7 +25,10 @@ CateringServices::Application.routes.draw do
                                     :registrations => 'businesses/registrations'}
 
   namespace :businesses do
-     resources :dashboard
+     resources :dashboard do
+       get 'add_menu', :on => :collection
+       put 'create_menu', :on => :member
+     end
    end
 
   match 'membership', to: 'plans#membership'

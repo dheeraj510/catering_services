@@ -13,6 +13,8 @@
   <![endif]-->
 
   <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag :defaults, "nested_form" %>
 
   <!-- For third-generation iPad with high-resolution Retina display: -->
   <!-- Size should be 144 x 144 pixels -->
@@ -106,15 +108,17 @@
 
 <div class="container-fluid">
   <div class="row-fluid">
+
     <div class="span3">
-          <div class="sidebar-nav">
-            <ul class="nav nav-list bs-docs-sidenav">
-      <li class="active"><a href="/businesses/dashboard"><i class="icon-home"></i> Dashboard<i class="icon-chevron-right"></i></a></li>
-      <li><a href="/businesses/dashboard/<%= current_business.name %>/edit "><i class="icon-user"></i> Update Profile<i class="icon-chevron-right"></i></a></li>
-     <li><a href="/businesses/sign_out"  data-method="delete"><i class="icon-off"></i> Logout<i class="icon-chevron-right"></i></a></li>
-    </ul>
-          </div>
-        </div><!--/span-->
+      <div class="sidebar-nav">
+        <ul class="nav nav-list bs-docs-sidenav">
+          <li class="active"><a href="/businesses/dashboard"><i class="icon-home"></i> Dashboard<i class="icon-chevron-right"></i></a></li>
+          <li><a href="/businesses/dashboard/<%= current_business.name %>/edit "><i class="icon-user"></i> Update Profile<i class="icon-chevron-right"></i></a></li>
+          <li><a href="/businesses/dashboard/add_menu"><i class="icon-home"></i>Add menu <i class="icon-chevron-right"></i></a></li>
+          <li><a href="/businesses/sign_out"  data-method="delete"><i class="icon-off"></i> Logout<i class="icon-chevron-right"></i></a></li>
+        </ul>
+      </div>
+    </div><!--/span-->
     <div class="span8">
       <%= bootstrap_flash %>
       <%= yield %>
@@ -123,15 +127,14 @@
 
 
 
-<footer>
-  <p>&copy; Company 2013</p>
-</footer>
+  <footer>
+    <p>&copy; Company 2013</p>
+  </footer>
 
 </div> <!-- /container -->
 
 <!-- Javascripts
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<%= javascript_include_tag "application" %>
 </body>
 </html>

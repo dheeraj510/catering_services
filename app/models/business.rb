@@ -8,12 +8,16 @@ class Business < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :name, :address, :phone_number, :alternate_number,
-                  :state, :country, :zipcode, :city, :plan_id
+                  :state, :country, :zipcode, :city, :plan_id, :menus_attributes
   # attr_accessible :title, :body
   validates :name, presence: {message: "Name should be present"}
   validates :phone_number, presence: true
   validates :plan_id, presence: true
 
+
   has_one :plan
-  has_many :menus
+  has_many :menus, :dependent => :destroy
+  accepts_nested_attributes_for :menus,
+                                allow_destroy: true
+
 end

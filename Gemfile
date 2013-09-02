@@ -22,11 +22,14 @@ gem "cancan"
 gem "devise"
 gem "figaro"
 gem 'client_side_validations'
+gem 'client_side_validations-simple_form'
 
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-linkedin'
 gem 'omniauth-twitter'
+
+gem "nested_form"
 
 group :production do
   gem 'pg', '0.15.1'

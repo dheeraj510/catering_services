@@ -78,10 +78,10 @@ ActiveRecord::Schema.define(:version => 20130902073030) do
 
   create_table "menus", :force => true do |t|
     t.string   "name"
-    t.string   "type"
+    t.string   "item_type"
     t.string   "description"
-    t.string   "price"
-    t.string   "business_id"
+    t.integer  "price"
+    t.integer  "business_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

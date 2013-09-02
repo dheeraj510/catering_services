@@ -1,5 +1,5 @@
 
-<%= form_for(@business, :url => businesses_dashboard_path(@business), :html => { :method => :put, :class => "form-horizontal" }) do |f| %>
+<%= form_for(@business,:validate => true, :url => businesses_dashboard_path(@business), :html => { :method => :put, :class => "form-horizontal" }) do |f| %>
     <%#= devise_error_messages! %>
     <fieldset>
           <!-- Address form -->
