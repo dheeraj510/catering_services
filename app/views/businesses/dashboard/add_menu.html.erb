@@ -33,10 +33,10 @@
           <div class="control-group">
             <label class="control-label">Type</label>
             <div class="controls">
-              <%= f.text_field :item_type,
+              <%= f.select :item_type,['Veg','Non-Veg'],
                                :validate => true,
                                :type => "Type",
-                               :placeholder =>"Please Choose type",
+                               :prompt =>"Please Select ...",
                                :class => "input-xlarge" %>
             </div>
           </div>

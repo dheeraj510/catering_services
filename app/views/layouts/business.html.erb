@@ -112,9 +112,9 @@
     <div class="span3">
       <div class="sidebar-nav">
         <ul class="nav nav-list bs-docs-sidenav">
-          <li class="active"><a href="/businesses/dashboard"><i class="icon-home"></i> Dashboard<i class="icon-chevron-right"></i></a></li>
-          <li><a href="/businesses/dashboard/<%= current_business.name %>/edit "><i class="icon-user"></i> Update Profile<i class="icon-chevron-right"></i></a></li>
-          <li><a href="/businesses/dashboard/add_menu"><i class="icon-home"></i>Add menu <i class="icon-chevron-right"></i></a></li>
+          <li class="<%=  params[:action].eql?("index") ? 'active' : '' %>"><a href="/businesses/dashboard"><i class="icon-home"></i> Dashboard<i class="icon-chevron-right"></i></a></li>
+          <li class="<%=  params[:action].eql?("edit") ? 'active' : '' %>"><a href="/businesses/dashboard/<%= current_business.name %>/edit "><i class="icon-user"></i> Update Profile<i class="icon-chevron-right"></i></a></li>
+          <li class="<%=  params[:action].eql?("add_menu") ? 'active' : '' %>"><a href="/businesses/dashboard/add_menu"><i class="icon-home"></i>Add menu <i class="icon-chevron-right"></i></a></li>
           <li><a href="/businesses/sign_out"  data-method="delete"><i class="icon-off"></i> Logout<i class="icon-chevron-right"></i></a></li>
         </ul>
       </div>
