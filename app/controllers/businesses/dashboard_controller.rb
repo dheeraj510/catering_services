@@ -63,15 +63,24 @@ class Businesses::DashboardController < ApplicationController
 
   def menuprice
     @totalprice = 0
-    params[:id].each do |id|
-      @price = Menu.find(id).price
-      @totalprice += @price
+    if params[:id].blank?
+      @totalprice = 0
+    else
+      params[:id].each do |id|
+        @price = Menu.find(id).price
+        @totalprice += @price
+      end
     end
     if @totalprice
       render :text => @totalprice, :layout => false
     else
       render :text => false, :layout => false
     end
+  end
+
+
+  def default_catering_service
+    @menu = current_business.menus
   end
 
 end
