@@ -31,7 +31,7 @@ class Businesses::RegistrationsController < Devise::RegistrationsController
 
 
   def change_layout
-    if params[:action] == 'edit' || 'update'
+    if params[:action] == 'edit' || params[:action] == 'update'
       'business'
     else
       'home'

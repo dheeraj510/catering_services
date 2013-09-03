@@ -35,7 +35,7 @@ CateringServices::Application.routes.draw do
    end
 
   match 'membership', to: 'plans#membership'
-
+  match 'menuprice' => 'businesses/dashboard#menuprice'
   root :to => 'home#index'
 
 

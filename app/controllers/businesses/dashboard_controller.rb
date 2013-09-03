@@ -59,8 +59,19 @@ class Businesses::DashboardController < ApplicationController
     else
       redirect_to :back, :alert => 'Failed to delete Item.'
     end
+  end
 
-
+  def menuprice
+    @totalprice = 0
+    params[:id].each do |id|
+      @price = Menu.find(id).price
+      @totalprice += @price
+    end
+    if @totalprice
+      render :text => @totalprice, :layout => false
+    else
+      render :text => false, :layout => false
+    end
   end
 
 end
