@@ -31,14 +31,16 @@ CateringServices::Application.routes.draw do
        get 'edit_menu', :on => :member
        put 'update_menu', :on => :member
        delete 'delete_menu', :on => :member
+       get 'default_catering_service', :on => :collection
      end
    end
 
   match 'membership', to: 'plans#membership'
-  match 'catering-service', to: 'businesses/dashboard#default_catering_service'
   match 'menuprice' => 'businesses/dashboard#menuprice'
+
   root :to => 'home#index'
 
-
+  #resources :menu_lists , :only => [:create]
+  match 'menuids' => 'menu_lists#create'
 
 end

@@ -80,6 +80,7 @@ class Businesses::DashboardController < ApplicationController
 
 
   def default_catering_service
+    @menu_list = MenuList.new
     @menu = current_business.menus
   end
 

@@ -19,5 +19,5 @@ class Business < ActiveRecord::Base
   has_many :menus, :dependent => :destroy
   accepts_nested_attributes_for :menus,
                                 allow_destroy: true
-
+  has_many :menu_lists
 end
