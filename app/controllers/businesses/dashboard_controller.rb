@@ -54,6 +54,7 @@ class Businesses::DashboardController < ApplicationController
 
   def delete_menu
     @menu = Menu.find(params[:id])
+    menulist
     if @menu.destroy
       redirect_to(businesses_dashboard_index_path, :notice => 'Item deleted successfully.')
     else
@@ -82,6 +83,23 @@ class Businesses::DashboardController < ApplicationController
   def default_catering_service
     @menu_list = MenuList.new
     @menu = current_business.menus
+  end
+
+  # menulist delete menu method when particular menu is deleted
+  def menulist
+    @menulist = current_business.menu_lists
+       @menulist.each do |m|
+         m.menu_ids.split(',').each do |i|
+           if i == params[:id]
+             @menu_ids = m.menu_ids.split(',')-i.split
+             if @menu_ids.count == 0
+              m.destroy
+             else
+             m.update_attribute(:menu_ids, @menu_ids.join(',') )
+             end
+           end
+         end
+       end
   end
 
 end
