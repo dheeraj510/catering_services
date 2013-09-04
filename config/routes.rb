@@ -24,10 +24,24 @@ CateringServices::Application.routes.draw do
   devise_for :businesses ,:controllers=>{:sessions => 'businesses/sessions',
                                     :registrations => 'businesses/registrations'}
 
+  namespace :businesses do
+     resources :dashboard do
+       get 'add_menu', :on => :collection
+       put 'create_menu', :on => :member
+       get 'edit_menu', :on => :member
+       put 'update_menu', :on => :member
+       delete 'delete_menu', :on => :member
+       get 'default_catering_service', :on => :collection
+     end
+   end
+
   match 'membership', to: 'plans#membership'
+  match 'menuprice' => 'businesses/dashboard#menuprice'
 
   root :to => 'home#index'
 
-
+  resources :menu_lists , :only => [:index, :edit]
+  match 'menuids' => 'menu_lists#create'
+  match 'menulistUpdate' => 'menu_lists#update'
 
 end

@@ -14,8 +14,14 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require rails.validations
+//= require rails.validations.simple_form
+//= require rails.validations.nested_form
+//= require jquery_nested_form
 //= require_tree .
 
 $(document).ready(function () {
     $("#index-tabs").tabs();
-})
+});
+$('.sample1').on('nested:fieldAdded', function(event) {
+  $(event.target).find(':input').enableClientSideValidations();
+});
