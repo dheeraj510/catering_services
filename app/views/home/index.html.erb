@@ -1,2 +1,10 @@
 <h1>Welcome !</h1>
 
+    <%= form_tag root_path, method: :get do %>
+      <%= text_field_tag :search, params[:search], size: 30 %>
+      <%= submit_tag "Search", name: nil %>
+    <% end %>
+
+    <% @business.each do |product| %>
+      <h2><%= product.name %></h2>
+    <% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130830094831) do
+ActiveRecord::Schema.define(:version => 20130904093752) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -76,6 +76,24 @@ ActiveRecord::Schema.define(:version => 20130830094831) do
   add_index "businesses", ["email"], :name => "index_businesses_on_email", :unique => true
   add_index "businesses", ["reset_password_token"], :name => "index_businesses_on_reset_password_token", :unique => true
 
+  create_table "menu_lists", :force => true do |t|
+    t.string   "name"
+    t.text     "menu_ids"
+    t.integer  "business_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "menus", :force => true do |t|
+    t.string   "name"
+    t.string   "item_type"
+    t.string   "description"
+    t.integer  "price"
+    t.integer  "business_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "plans", :force => true do |t|
     t.string   "membership"
     t.integer  "price"
@@ -88,6 +106,13 @@ ActiveRecord::Schema.define(:version => 20130830094831) do
     t.string   "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "search_suggestions", :force => true do |t|
+    t.string   "term"
+    t.integer  "popularity"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
