@@ -40,7 +40,8 @@ CateringServices::Application.routes.draw do
 
   root :to => 'home#index'
 
-  #resources :menu_lists , :only => [:create]
+  resources :menu_lists , :only => [:index, :edit]
   match 'menuids' => 'menu_lists#create'
+  match 'menulistUpdate' => 'menu_lists#update'
 
 end

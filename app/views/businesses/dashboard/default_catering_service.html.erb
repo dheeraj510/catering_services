@@ -1,4 +1,2 @@
-<% current_business.menu_lists.last.menu_ids.split(',').each do |m| %>
-    <%= Menu.find_by_id(m).name %>  <br/>
-    <% end %>
+
 <%= render 'menu_lists_form' %>

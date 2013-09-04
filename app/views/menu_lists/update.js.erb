@@ -1,0 +1,6 @@
+<% if @message.eql?('fail') %>
+$('#list-message').html("<%= escape_javascript(@text)%>").addClass('alert-error');
+<% else %>
+$('#list-message').html("<%= escape_javascript(@text)%>").addClass('alert-success').removeClass('alert-error');
+$(window.location.replace("/menu_lists"));
+<% end %>

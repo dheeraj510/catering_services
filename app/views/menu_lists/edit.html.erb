@@ -29,9 +29,8 @@
           All Items
           <select multiple='multiple' class='tandem-select-src-select'>
             <% @menu.each do |m| %>
-                <option value="<%= m.id %>"><%= m.name %>(<%= m.item_type %>)-<%= m.price %></option>
+                <option  class="<%= (@menus.include? "#{m.id}") == true ? "tandem-select-option-disabled" : "" %>" value="<%= m.id %>"><%= m.name %>(<%= m.item_type %>)-<%= m.price %> </option>
             <% end %>
-
           </select>
         </div>
 
@@ -52,9 +51,20 @@
         <!-- Destination Div and Select Menu -->
         <div class='tandem-select-dst-div'>
           Selected Items List
-          <select multiple='multiple' class='tandem-select-dst-select' id='selected-items' name='selected-menu'></select>
+          <select multiple='multiple' class='tandem-select-dst-select' id='selected-items' name='selected-menu'>
+            <% @price = 0 %>
+            <% @menus.each do |m| %>
+
+                <% mm = Menu.find(m) %>
+                <option value="<%= mm.id %>"><%= mm.name %>(<%= mm.item_type %>)-<%= mm.price %> </option>
+                <% @price = mm.price + @price %>
+            <% end %>
+          </select>
           <div id="no_of_items"></div>
-          <div id="totalprice"></div>
+          <div id="totalprice">
+            Total selected Items: <%= @menus.count %><br/>
+            Total Price: <%= @price %>
+          </div>
 
         </div>
 
@@ -104,11 +114,11 @@
 
       </script>
     </fieldset>
-    <div><%= f.submit "Submit", :onclick => "return validateform();" %></div>
+    <div><%= f.submit "Submit", :onclick => "return validateuform();" %></div>
 <% end %>
 
 <script>
-    function validateform() {
+    function validateuform() {
 
         var name = $("#menu_list_name").val();
         var item_value = [] ;
@@ -116,9 +126,9 @@
             item_value.push($(this).val());
         }) ;
 
-        $.post("/menuids",{ id:item_value, name: name })
+        $.post("/menulistUpdate",{ id:item_value, name: name, menulistid: <%= @menu_list.id %>  })
 
-      return false;
+        return false;
 
 
     }
