@@ -138,3 +138,8 @@ div.field_with_errors div.ui-effects-wrapper {
 .icon-chevron-right {
     background-position: -456px -72px;
 }
+
+.container-fluid, footer {
+    padding-right: 75px;
+    padding-left: 75px;
+}
