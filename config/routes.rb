@@ -1,6 +1,9 @@
 CateringServices::Application.routes.draw do
 
 
+  resources :search_suggestions
+
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config

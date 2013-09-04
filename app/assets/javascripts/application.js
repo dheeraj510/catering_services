@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require rails.validations
@@ -21,7 +22,13 @@
 
 $(document).ready(function () {
     $("#index-tabs").tabs();
+
 });
+
 $('.sample1').on('nested:fieldAdded', function(event) {
   $(event.target).find(':input').enableClientSideValidations();
 });
+
+
+
+
