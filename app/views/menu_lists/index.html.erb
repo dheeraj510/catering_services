@@ -13,6 +13,7 @@
             <table class="table">
               <thead>
               <tr>
+                <th></th>
                 <th>Item Name</th>
                 <th>Description</th>
                 <th>Type</th>
@@ -24,6 +25,7 @@
               <% list.menu_ids.split(",").each do |id| %>
                   <tr>
                     <% @m = Menu.find(id) %>
+                    <td><%= image_tag @m.image.url(:small) %></td>
                     <td><%= @m.name %></td>
                     <td><%= @m.description %></td>
                     <td><%= @m.item_type %></td>

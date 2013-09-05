@@ -113,9 +113,9 @@
       <div class="sidebar-nav">
         <ul class="nav nav-list bs-docs-sidenav">
           <li class="<%=  params[:controller].eql?("businesses/dashboard") && params[:action].eql?("index") ? 'active' : '' %>"><a href="/businesses/dashboard"><i class="icon-home"></i> Dashboard <i class="icon-chevron-right"></i></a></li>
-          <li class="<%=  params[:action].eql?("add_menu") ? 'active' : '' %>"><a href="/businesses/dashboard/add_menu"><i class="icon-home"></i> Add menu <i class="icon-chevron-right"></i></a></li>
-          <li class="<%=  params[:controller].eql?("menu_lists") ? 'active' : '' %>"><a href="/menu_lists"><i class="icon-home"></i> My Menulists <i class="icon-chevron-right"></i></a></li>
-          <li class="<%=  params[:action].eql?("default_catering_service") ? 'active' : '' %>"><a href="/businesses/dashboard/default_catering_service"><i class="icon-home"></i> Default catering list <i class="icon-chevron-right"></i></a></li>
+          <li class="<%=  params[:action].eql?("add_menu") ? 'active' : '' %>"><a href="/businesses/dashboard/add_menu"><i class="icon-home"></i> Menu Items <i class="icon-chevron-right"></i></a></li>
+          <li class="<%=  params[:controller].eql?("menu_lists") ? 'active' : '' %>"><a href="/menu_lists"><i class="icon-home"></i> My Menu Lists <i class="icon-chevron-right"></i></a></li>
+          <li class="<%=  params[:action].eql?("default_catering_service") ? 'active' : '' %>"><a href="/businesses/dashboard/default_catering_service"><i class="icon-home"></i> Create catering Menu list <i class="icon-chevron-right"></i></a></li>
           <li class="<%=  params[:action].eql?("edit") && params[:controller].eql?("businesses/dashboard") ? 'active' : '' %>"><a href="/businesses/dashboard/<%= current_business.name %>/edit "><i class="icon-user"></i> Update Profile<i class="icon-chevron-right"></i></a></li>
           <li class="<%=  params[:controller].eql?("businesses/registrations") && params[:action].eql?("edit") ? 'active' : '' %>"><a href="/businesses/edit "><i class="icon-user"></i> Change Password<i class="icon-chevron-right"></i></a></li>
           <li><a href="/businesses/sign_out"  data-method="delete"><i class="icon-off"></i> Logout<i class="icon-chevron-right"></i></a></li>
