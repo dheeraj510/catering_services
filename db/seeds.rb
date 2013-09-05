@@ -22,3 +22,4 @@ puts 'Plans'
  Plan.create(membership: p, price: price)
 end
 
+

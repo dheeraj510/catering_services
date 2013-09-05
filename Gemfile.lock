@@ -68,6 +68,8 @@ GEM
       warden (~> 1.2.1)
     erubis (2.7.0)
     execjs (2.0.1)
+    faker (1.2.0)
+      i18n (~> 0.5)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
     fastercsv (1.5.5)
@@ -140,6 +142,7 @@ GEM
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
+    populator (1.0.0)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -219,6 +222,7 @@ DEPENDENCIES
   client_side_validations-simple_form
   coffee-rails (~> 3.2.1)
   devise
+  faker
   figaro
   jquery-rails (~> 2.3.0)
   less-rails
@@ -228,6 +232,7 @@ DEPENDENCIES
   omniauth-linkedin
   omniauth-twitter
   pg (= 0.15.1)
+  populator
   rack-mini-profiler
   rails (= 3.2.13)
   rails_12factor (= 0.0.2)

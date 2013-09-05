@@ -37,3 +37,6 @@ group :production do
 end
 
 gem 'rack-mini-profiler'
+
+gem 'populator'
+gem 'faker'
