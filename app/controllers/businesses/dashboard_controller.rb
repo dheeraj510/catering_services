@@ -15,7 +15,7 @@ class Businesses::DashboardController < ApplicationController
         format.html { redirect_to(businesses_dashboard_index_path, :notice => 'Details updated successfully.') }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit_user" , :error => 'Failed to update details.'}
+        format.html { render :action => "edit" , :error => 'Failed to update details.'}
         format.xml  { render :xml => @business.errors, :status => :unprocessable_entity }
       end
     end
