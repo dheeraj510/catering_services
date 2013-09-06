@@ -1,63 +1,23 @@
 
-<h2>Your Menu list</h2>
+  <div class="row">
+    <div class="span2">
+      <%= image_tag @business.avatar.url(:medium) ,  :class => "img-thumbnail" %><br/>
 
-<div class="btn-toolbar">
-  <%= link_to "Add New Item", add_menu_businesses_dashboard_index_path, :class =>"btn btn-primary" %>
-  <button class="btn">Import</button>
-  <button class="btn">Export</button>
-</div>
-<div class="well">
-  <table class="table">
-    <thead>
-    <tr>
-      <th>Item Name</th>
-      <th>Description</th>
-      <th>Type</th>
-      <th>Price</th>
-      <th style="width: 36px;"></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <% @menu.each do |m| %>
-          <td><%= m.name %></td>
-          <td><%= m.description %></td>
-          <td><%= m.item_type %></td>
-          <td><%= m.price %></td>
-          <td>
-            <%= link_to "", edit_menu_businesses_dashboard_path(m.id), :class=>"icon-pencil"%>
-            <%= link_to "", delete_menu_businesses_dashboard_path(m.id),:method => :delete, :class=>"icon-remove"%>
-          </td>
-          </tr>
+    </div>
+    <div class="span8">
+      <blockquote>
+        <p><%= @business.name %></p>
+        <small><cite title="Source Title"><%= @business.city %>, <%= @business.state %>, <%= @business.country %> <i class="icon-map-marker"></i></cite></small>
+      </blockquote>
 
-      <% end %>
-      </tbody>
-  </table>
-</div>
-<!--
-<div class="pagination">
-  <ul>
-    <li><a href="#">Prev</a></li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">Next</a></li>
-  </ul>
-</div>
-<div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Delete Confirmation</h3>
+        <i class="icon-envelope"> <%= @business.email %></i> <br>
+        <i class="icon-globe"></i> www.bootsnipp.com <br>
+        <i class="icon-gift"></i> January 30, 1974
+
+
+    </div>
+
+
   </div>
-  <div class="modal-body">
-    <p class="error-text">Are you sure you want to delete the user?</p>
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-    <button class="btn btn-danger" data-dismiss="modal">Delete</button>
-  </div>
-</div>
--->
 
 

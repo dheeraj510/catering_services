@@ -1,10 +1,88 @@
 
+<h2>Your Items </h2>
+
+<div class="btn-toolbar">
+  <button class="btn">Import</button>
+  <button class="btn">Export</button>
+</div>
+<div class="well">
+  <table class="table">
+    <thead>
+    <tr>
+      <th></th>
+      <th>Item Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Price</th>
+      <th style="width: 36px;"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <% @menu_items.each do |m| %>
+          <td><%= image_tag m.image.url(:thumb)  %></td>
+          <td><%= m.name %></td>
+          <td><%= m.description %></td>
+          <td><%= m.item_type %></td>
+          <td><%= m.price %></td>
+          <td>
+            <%= link_to "", edit_menu_businesses_dashboard_path(m.id), :class=>"icon-pencil"%>
+            <%= link_to "", delete_menu_businesses_dashboard_path(m.id),:method => :delete, :class=>"icon-remove",
+                        :confirm => "Sure want to delete #{m.name}"%>
+          </td>
+          </tr>
+
+      <% end %>
+      </tbody>
+  </table>
+</div>
+
+<!--
+<div class="pagination">
+  <ul>
+    <li><a href="#">Prev</a></li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">Next</a></li>
+  </ul>
+</div>
+<div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Delete Confirmation</h3>
+  </div>
+  <div class="modal-body">
+    <p class="error-text">Are you sure you want to delete the user?</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    <button class="btn btn-danger" data-dismiss="modal">Delete</button>
+  </div>
+</div>
+-->
+
+
+
 <%= nested_form_for(@business,:validate => true, :url => create_menu_businesses_dashboard_path(@business), :html => { :method => :put, :class => "form-horizontal" }) do |ff| %>
     <%= devise_error_messages! %>
     <% ff.fields_for :menus do |f| %>
         <%= render 'form', :f => f %>
     <% end %>
-    <p><%= ff.link_to_add "Add menu item", :menus %></p>
-    <div><%= ff.submit "Update" %></div>
+    <p><%= ff.link_to_add " Add menu item", :menus,:class =>"sample-link-update icon-plus-sign"  %></p>
+    <div><%= ff.submit "Update", :class => "btn btn-success", :id => "update-btn" %></div>
 <% end %>
+
+
+<script>
+$(document).ready(function(){
+  $("#update-btn").hide();
+  $(".sample-link-update").click(function(){
+  $("#update-btn").show();
+  });
+});
+</script>
+
+
 

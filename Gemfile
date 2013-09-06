@@ -31,6 +31,9 @@ gem 'omniauth-twitter'
 
 gem "nested_form"
 
+gem 'paperclip'
+gem 'aws-sdk'
+
 group :production do
   gem 'pg', '0.15.1'
   gem 'rails_12factor', '0.0.2'

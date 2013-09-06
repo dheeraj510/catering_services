@@ -2,8 +2,20 @@
   <!-- Address form -->
   <% if params[:action] == "add_menu"  %>
       <h2 class="text-info">Menu Item:</h2>
+      <span class="btn btn-success fileinput-button">
+                    <i class="glyphicon glyphicon-plus"></i>
+                    <span>Change <Image></Image>...</span>
+        <%= f.file_field :image, :type => "file" %>
+                    </span>         <br/><br/>
   <% else %>
       <h2 class="text-info">Edit Item:</h2>
+      <br/>
+      <%= image_tag @menu.image.url(:thumb) %><br/>
+           <span class="btn btn-success fileinput-button">
+               <i class="glyphicon glyphicon-plus"></i>
+               <span>Change Image...</span>
+             <%= f.file_field :image, :type => "file" %>
+               </span>        <br/><br/>
   <% end %>
   <br/>
   <!-- full-name input-->
@@ -48,8 +60,11 @@
                        :placeholder =>"Amount",
                        :class => "input-xlarge" %>
     </div>
+
   </div>
   <% if params[:action] == "add_menu"  %>
-      <%= f.link_to_remove "Remove this menu" %>
+      <%= f.link_to_remove " Remove this menu",
+                           :class =>"icon-minus-sign",
+                           :style => "color: red"%>
   <% end %>
 </fieldset>

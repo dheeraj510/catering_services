@@ -1,14 +1,18 @@
 .message {
-  background-color: red;
+
   border-bottom-right-radius: 5px 5px;
   border-top-right-radius: 5px 5px;
-  padding: 2px 5px;
+  padding: 5px 10px;
+  color: #940202;
 }
 
 div.field_with_errors div.ui-effects-wrapper {
   display: inline-block !important;
 }
 
+.field_with_errors label {
+    display: inline;
+}
 
 .sidebar-nav {
     padding: 9px 0;
@@ -137,4 +141,18 @@ div.field_with_errors div.ui-effects-wrapper {
 }
 .icon-chevron-right {
     background-position: -456px -72px;
+}
+
+
+
+.row-fluid [class*="span"]:first-child {
+    margin-left: 25px;
+}
+
+.table th, .table td {
+    border-top: 1px solid #DDDDDD;
+    line-height: 20px;
+    padding: 8px;
+    text-align: left;
+    vertical-align: middle;
 }
