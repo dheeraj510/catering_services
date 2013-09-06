@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  coupon_name: MyString
+  discount: 1
+  coupon: MyString
+  coupon_status: false
+  business_id: 1
+
+two:
+  coupon_name: MyString
+  discount: 1
+  coupon: MyString
+  coupon_status: false
+  business_id: 1

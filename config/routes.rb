@@ -1,6 +1,9 @@
 CateringServices::Application.routes.draw do
 
 
+  resources :coupons
+
+
   resources :search_suggestions
 
 
