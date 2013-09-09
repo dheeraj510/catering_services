@@ -1,8 +1,13 @@
 <h1>Welcome !</h1>
 
-<%= form_tag root_path, method: :get do %>
-    <%= text_field_tag :search, params[:search], size: 30 %>
-    <%= submit_tag "Search", name: nil %>
+<%= form_tag root_path,:html => {:id=>"custom-search-form", :class => "form-search form-horizontal pull-right"}, method: :get do %>
+    <div class="input-append span12">
+    <%= text_field_tag :search, params[:search],
+                       :type => "text",
+                       :class=>"",
+                       :placeholder=>"Search" %>
+      <button type="submit" class="btn"><i class="icon-search"></i></button>
+    </div>
 <% end %>
 
 <% unless @all_business.blank? %>

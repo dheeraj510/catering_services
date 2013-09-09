@@ -4,7 +4,7 @@
     <%= image_tag @business.avatar.url(:medium) ,  :class => "img-thumbnail" %><br/>
 
   </div>
-  <div class="span8">
+  <div class="span6">
     <blockquote>
       <p><%= @business.name %></p>
       <small><cite title="Source Title"><%= @business.city %>, <%= @business.state %>, <%= @business.country %> <i class="icon-map-marker"></i></cite></small>
@@ -26,7 +26,11 @@
     </p>
 
   </div>
+  <div class="span3">
+    <p>QR Code </p>
+    <%= image_tag qr_code(150, "catering-services.herokuapp.com/users/dashboard/#{@business.id}/view_business") %>
 
+  </div>
 
 </div>
 
