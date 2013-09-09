@@ -14,7 +14,7 @@ class MenuListsController < ApplicationController
   end
 
   def create
-    if params[:name].blank? || params[:id].blank? || params[:price].blank
+    if params[:name].blank? || params[:id].blank? || params[:price].blank?
       @text = "List name can't be blank and select atleast one item."
       @message = "fail"
     else
