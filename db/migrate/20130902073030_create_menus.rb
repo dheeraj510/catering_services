@@ -4,7 +4,7 @@ class CreateMenus < ActiveRecord::Migration
       t.string :name
       t.string :item_type
       t.string :description
-      t.integer :price
+      t.float :price
       t.integer :business_id
 
       t.timestamps

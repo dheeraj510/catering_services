@@ -22,6 +22,9 @@
               </tr>
               </thead>
               <tbody>
+
+              <% @total = 0 %>
+
               <% list.menu_ids.split(",").each do |id| %>
                   <tr>
                     <% @m = Menu.find(id) %>
@@ -29,12 +32,20 @@
                     <td><%= @m.name %></td>
                     <td><%= @m.description %></td>
                     <td><%= @m.item_type %></td>
-                    <td><%= @m.price %></td>
-
+                    <td><%= number_to_currency(@m.price, :locale => 'en-IN') %></td>
+                    <% @total += @m.price  %>
                   </tr>
               <% end %>
               </tbody>
             </table>
+            <hr>
+
+            <div style="float: right; text-align: right; margin-right: 50px">
+              Total = <strike><b><%= number_to_currency(@total, :locale => 'en-IN') %></b></strike><br/>
+              Discount = <b><%= number_to_currency((@total - list.price), :locale => 'en-IN')  %></b>
+              <hr>
+              Total Amount After Discount = <b><%=  number_to_currency(list.price, :locale => 'en-IN')  %></b>
+            </div>
 
             <%= link_to " ", edit_menu_list_path(list),:class=>"icon-pencil" %> |
             <%= link_to " ", "#", :class=>"icon-remove"%>

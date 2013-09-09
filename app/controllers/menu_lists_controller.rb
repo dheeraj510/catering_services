@@ -14,7 +14,7 @@ class MenuListsController < ApplicationController
   end
 
   def create
-    if params[:name].blank? || params[:id].blank?
+    if params[:name].blank? || params[:id].blank? || params[:price].blank
       @text = "List name can't be blank and select atleast one item."
       @message = "fail"
     else
@@ -24,9 +24,11 @@ class MenuListsController < ApplicationController
       end
       @sample = @menu_id.join(',')
       @name = params[:name]
+      @price = params[:price]
       @menu_list = MenuList.create(:name => @name,
                                    :menu_ids => @sample,
-                                   :business_id => current_business.id )
+                                   :business_id => current_business.id,
+                                   :price => @price )
       @text = "Menu list created successfully."
     end
     respond_to do |format|
@@ -41,7 +43,7 @@ class MenuListsController < ApplicationController
   end
 
   def update
-     if params[:name].blank? || params[:id].blank?
+     if params[:name].blank? || params[:id].blank?  || params[:price].blank?
        @text = "List name can't be blank and select atleast one item."
        @message = "fail"
      else
@@ -52,8 +54,9 @@ class MenuListsController < ApplicationController
        @list = MenuList.find(params[:menulistid])
        @sample = @menu_id.join(',')
        @name = params[:name]
+       @price = params[:price]
        @menu_list = @list.update_attributes(:name => @name,
-                                    :menu_ids => @sample,
+                                    :menu_ids => @sample,:price => @price
                                      )
        @text = "Menu list created successfully."
      end

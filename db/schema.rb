@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(:version => 20130906122951) do
     t.string   "name"
     t.text     "menu_ids"
     t.integer  "business_id"
+    t.float    "price"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -92,7 +93,7 @@ ActiveRecord::Schema.define(:version => 20130906122951) do
     t.string   "name"
     t.string   "item_type"
     t.string   "description"
-    t.integer  "price"
+    t.float    "price"
     t.integer  "business_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false

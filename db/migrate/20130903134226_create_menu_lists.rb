@@ -4,6 +4,7 @@ class CreateMenuLists < ActiveRecord::Migration
       t.string :name
       t.text :menu_ids
       t.integer :business_id
+      t.float :price
 
       t.timestamps
     end

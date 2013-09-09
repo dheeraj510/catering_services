@@ -114,7 +114,20 @@
 
       </script>
     </fieldset>
-    <div><%= f.submit "Submit", :onclick => "return validateuform();" %></div>
+    <br/>
+        <div class="control-group">
+               <label class="control-label">Enter your offer Amount</label>
+               <div class="controls">
+                 <%= f.text_field :price,
+                                  :validate => true,
+                                  :type => "text",
+                                  :placeholder =>"Your price for this catalog",
+                                  :class => "input-xlarge" %>
+                 <p class="help-block"></p>
+               </div>
+
+        <%= f.submit "Submit", :onclick => "return validateuform();" %>
+        </div>
 <% end %>
 
 <script>
@@ -122,11 +135,13 @@
 
         var name = $("#menu_list_name").val();
         var item_value = [] ;
+        var price = $('#menu_list_price').val();
+
         $("#selected-items>option").each(function(){
             item_value.push($(this).val());
         }) ;
 
-        $.post("/menulistUpdate",{ id:item_value, name: name, menulistid: <%= @menu_list.id %>  })
+        $.post("/menulistUpdate",{ id:item_value, name: name, menulistid: <%= @menu_list.id %>, price: price  })
 
         return false;
 
