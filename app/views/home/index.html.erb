@@ -7,7 +7,7 @@
 
 <% unless @all_business.blank? %>
     <% @all_business.each do |b| %>
-        <h2><%=link_to b.name, "#" %></h2>
+        <h2><%=link_to b.name,  view_business_users_dashboard_path(b) %></h2>
         <p>Response:
         <%= ratings_for b,:dimension => :response , :remote_options => {:url => rate_business_path(b)} %>
         </p>
@@ -20,6 +20,7 @@
 
 
 <script>
+  <% if user_signed_in? %>
    $('.ajaxful-rating').click(function(){
        new $.Zebra_Dialog('' +
                'Thanks for Rating', {
@@ -30,6 +31,7 @@
            });
        location.reload()
    })
+  <% end  %>
 
 </script>
 

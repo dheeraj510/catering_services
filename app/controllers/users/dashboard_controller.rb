@@ -1,5 +1,5 @@
 class Users::DashboardController < ApplicationController
-  layout 'user'
+  layout :choose
   def index
   end
 
@@ -17,6 +17,18 @@ class Users::DashboardController < ApplicationController
         format.html { render :action => "edit_user" , :error => 'Failed to update details.'}
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
+    end
+  end
+
+  def view_business
+    @business = Business.find(params[:id])
+  end
+
+  def choose
+    if user_signed_in?
+      'user'
+    else
+      'home'
     end
   end
 

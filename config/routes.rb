@@ -21,7 +21,9 @@ CateringServices::Application.routes.draw do
   end
 
   namespace :users do
-    resources :dashboard
+    resources :dashboard do
+      get 'view_business', :on => :member
+    end
   end
 
   devise_for :businesses ,:controllers=>{:sessions => 'businesses/sessions',
