@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
                   :provider, :facebook_uid, :linkedin_uid, :twitter_uid
   # attr_accessible :title, :body
 
+  ajaxful_rater
 
   class << self
     #Omniauth instance methods

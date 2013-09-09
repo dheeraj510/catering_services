@@ -47,4 +47,8 @@ CateringServices::Application.routes.draw do
   match 'menuids' => 'menu_lists#create'
   match 'menulistUpdate' => 'menu_lists#update'
 
+  resources :businesses, :only => [] do
+    post 'rate', :on => :member
+  end
+
 end

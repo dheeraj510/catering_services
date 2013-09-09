@@ -14,6 +14,7 @@ class Business < ActiveRecord::Base
   validates :name, presence: {message: "Name should be present"}
   validates :phone_number, presence: true
   validates :plan_id, presence: true
+  validates :email, uniqueness: true
 
 
   has_one :plan
@@ -32,6 +33,7 @@ class Business < ActiveRecord::Base
       :content_type => { :content_type => ["image/jpg","image/png","image/jpeg", "image/gif"],
                          :message => "Invalid format. Should be .jpg / .png / .gif" },
       :size => { :in => 0..1.megabytes }
+  ajaxful_rateable :stars => 10, :dimensions => [:taste, :response, :hospitality]
 
 
 end

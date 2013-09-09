@@ -20,8 +20,9 @@
                            :validate => true,
                            :type => "text",
                            :placeholder =>"full name",
-                           :class => "input-xlarge",
-                           :readonly => true %>
+                           :class => "powertip input-xlarge",
+                           :readonly => true,
+                            :title => "hi"%>
           <p class="help-block"></p>
         </div>
       </div>
@@ -118,3 +119,24 @@
     <div><%= f.submit "Update" %></div>
 <% end %>
 
+
+<script>
+    function powerTipWithTitle() {
+        arr = ["nw","n","ne","e","se","s","sw","w"]
+        $.each(arr, function() {
+            $('.powertip_'+this).powerTip({
+                placement: this, // tooltip position
+                smartPlacement: true
+            });
+        });
+        $('.powertip_mouseover').powerTip({
+            placement: "ne", // tooltip position
+            smartPlacement: true ,
+            mouseOnToPopup: true
+        });
+    }
+
+    $(document).ready(function() {
+        powerTipWithTitle();
+    });
+</script>

@@ -25,7 +25,7 @@ class Businesses::RegistrationsController < Devise::RegistrationsController
       end
     else
       clean_up_passwords resource
-      respond_with resource
+      redirect_to root_path , alert: "Email is already taken. Check if Forgot password"
     end
   end
 

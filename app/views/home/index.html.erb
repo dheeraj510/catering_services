@@ -1,12 +1,41 @@
 <h1>Welcome !</h1>
 
-    <%= form_tag root_path, method: :get do %>
-      <%= text_field_tag :search, params[:search], size: 30 %>
-      <%= submit_tag "Search", name: nil %>
-    <% end %>
+<%= form_tag root_path, method: :get do %>
+    <%= text_field_tag :search, params[:search], size: 30 %>
+    <%= submit_tag "Search", name: nil %>
+<% end %>
 
-    <% unless @all_business.nil? %>
-    <% @all_business.each do |product| %>
-      <h2><%=link_to product.name, "#" %></h2>
+<% unless @all_business.blank? %>
+    <% @all_business.each do |b| %>
+        <h2><%=link_to b.name, "#" %></h2>
+        <p>Response:
+        <%= ratings_for b,:dimension => :response , :remote_options => {:url => rate_business_path(b)} %>
+        </p>
+        <p>Taste:
+        <%= ratings_for b,:dimension => :taste, :remote_options => {:url => rate_business_path(b)} %>
+        </p>
+        <p>Hospitality
+        <%= ratings_for b,:dimension => :hospitality, :remote_options => {:url => rate_business_path(b)} %>
+        </p>
+
+
+<script>
+   $('.ajaxful-rating').click(function(){
+       new $.Zebra_Dialog('' +
+               'Thanks for Rating', {
+               'buttons':  false,
+               'modal': false,
+               'position': ['right - 20', 'top + 20'],
+               'auto_close': 2000
+           });
+       location.reload()
+   })
+
+</script>
+
     <% end %>
+<% else %>
+    <% unless params[:search].blank? %>
+    <p>No search results found </p>
+        <% end %>
 <% end %>

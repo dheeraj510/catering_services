@@ -43,3 +43,5 @@ gem 'rack-mini-profiler'
 
 gem 'populator'
 gem 'faker'
+
+gem 'ajaxful_rating' , '>= 3.0.0.beta7'
