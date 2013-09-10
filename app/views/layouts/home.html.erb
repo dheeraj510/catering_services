@@ -86,20 +86,20 @@
 <div class="container-fluid">
   <div class="row-fluid">
 
-    <div class="span8">
+    <div class="span11">
       <%= bootstrap_flash %>
       <%= yield %>
     </div>
-    <% if user_signed_in? || business_signed_in? %>
-    <% else %>
-        <div class="span3">
+    <%# if user_signed_in? || business_signed_in? %>
+    <%# else %>
+       <!-- <div class="span3">
           <div class="sidebar-nav">
-            <% unless params[:controller] == 'businesses/sessions' || params[:controller] == 'businesses/registrations' || params[:controller] == 'plans' %>
-            <%= render '/layouts/social_login' %>
-                <% end %>
+            <%# unless params[:controller] == 'businesses/sessions' || params[:controller] == 'businesses/registrations' || params[:controller] == 'plans' %>
+            <%#= render '/layouts/social_login' %>
+                <%# end %>
           </div>
-        </div>
-    <% end %>
+        </div>-->
+    <%# end %>
   </div>
 </div><!--/row-->
 

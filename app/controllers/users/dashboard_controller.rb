@@ -22,6 +22,8 @@ class Users::DashboardController < ApplicationController
 
   def view_business
     @business = Business.find_by_name(params[:id])
+    @menu_items = @business.menus.paginate(:page => params[:page], :per_page => 5).order('created_at ASC')
+
   end
 
   def choose

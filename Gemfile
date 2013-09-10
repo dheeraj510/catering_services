@@ -11,6 +11,8 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
+  gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+  gem 'jquery-ui-rails'
 end
 
 gem 'jquery-rails', "~> 2.3.0"
@@ -45,3 +47,7 @@ gem 'populator'
 gem 'faker'
 
 gem 'ajaxful_rating' , '>= 3.0.0.beta7'
+
+gem 'will_paginate', '~> 3.0'
+
+

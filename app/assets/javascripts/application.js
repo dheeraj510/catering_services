@@ -18,6 +18,7 @@
 //= require rails.validations.simple_form
 //= require rails.validations.nested_form
 //= require jquery_nested_form
+//= require dataTables/jquery.dataTables
 //= require_tree .
 
 $(document).ready(function () {
