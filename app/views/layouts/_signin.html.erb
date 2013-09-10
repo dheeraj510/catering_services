@@ -25,26 +25,38 @@
       <% end %>
     </ul>
 <% else %>
-    <li><%= link_to "Register User", new_user_registration_path %></li>
-    <li><%= link_to "Register Business", membership_path %></li>
-    <li class="divider-vertical"></li>
-    <li class="dropdown">
-      <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
-      <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
-        <div id="index-tabs" >
-          <ul class="nav nav-tabs">
-            <li><a href="#tabs-1">User</a></li>
-            <li><a href="#tabs-2">Business</a></li>
-          </ul>
-          <div id="tabs-1">
-            <%= render '/layouts/user' %>
-          </div>
-          <div id="tabs-2">
-            <%= render '/layouts/business' %>
-          </div>
 
-        </div>
+    <a class="btn btn-primary" data-toggle="modal" href="#myModal" >Login</a>
 
+    <div class="modal hide" id="myModal">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">x</button>
+        <h3>Login to CateringServicesOnline.in.com</h3>
       </div>
-    </li>
+      <div class="modal-body">
+        <!--<form method="post" action='' name="login_form">
+          <p><input type="text" class="span3" name="eid" id="email" placeholder="Email"></p>
+          <p><input type="password" class="span3" name="passwd" placeholder="Password"></p>
+          <p><button type="submit" class="btn btn-primary">Sign in</button>
+            <a href="#">Forgot Password?</a>
+          </p>
+        </form>-->
+        <div>
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#home" data-toggle="tab">User</a></li>
+            <li><a href="#profile" data-toggle="tab">Business</a></li>
+          </ul>    <br/>   <br/><br/><br/>
+          <div id="myTabContent" class="tab-content">
+            <div class="tab-pane active in" id="home">
+              <%= render '/layouts/user' %>
+
+            </div>
+            <div class="tab-pane fade" id="profile">
+              <%= render '/layouts/business' %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
 <% end %>

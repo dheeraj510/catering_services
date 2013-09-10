@@ -1,48 +1,52 @@
-<h1>Welcome !</h1>
 
-<%= form_tag root_path,:html => {:id=>"custom-search-form", :class => "form-search form-horizontal pull-right"}, method: :get do %>
-    <div class="input-append span12">
-    <%= text_field_tag :search, params[:search],
-                       :type => "text",
-                       :class=>"",
-                       :placeholder=>"Search" %>
-      <button type="submit" class="btn"><i class="icon-search"></i></button>
-    </div>
-<% end %>
+<div class="thumbnail center well well-small text-center">
+  <h2>Welcome !</h2>
+  <p>Search For Business by Name of it.</p>
+  <%= form_tag root_path,:html => {:id=>"custom-search-form", :class => "form-search form-horizontal pull-right"}, method: :get do %>
+      <div class="input-append">
+        <%= text_field_tag :search, params[:search],
+                           :type => "text",
+                           :class=>"",
+                           :placeholder=>"Search" %>
+        <button type="submit" class="btn"><i class="icon-search"></i></button>
+      </div>
+  <% end %>
 
-<% unless @all_business.blank? %>
-    <% @all_business.each do |b| %>
-        <h2><%=link_to b.name,  business_view_path(:id => "#{b.name}") %></h2>
-        <p>Response:
-        <%= ratings_for b,:dimension => :response , :remote_options => {:url => rate_business_path(b)} %>
-        </p>
-        <p>Taste:
-        <%= ratings_for b,:dimension => :taste, :remote_options => {:url => rate_business_path(b)} %>
-        </p>
-        <p>Hospitality
-        <%= ratings_for b,:dimension => :hospitality, :remote_options => {:url => rate_business_path(b)} %>
-        </p>
+  <% unless @all_business.blank? %>
+      <% @all_business.each do |b| %>
+          <h2><%=link_to b.name,  business_view_path(:id => "#{b.name}") %></h2>
+          <!--<p>Response:
+            <%#= ratings_for b,:dimension => :response , :remote_options => {:url => rate_business_path(b)} %>
+          </p>
+          <p>Taste:
+            <%#= ratings_for b,:dimension => :taste, :remote_options => {:url => rate_business_path(b)} %>
+          </p>
+          <p>Hospitality
+            <%#= ratings_for b,:dimension => :hospitality, :remote_options => {:url => rate_business_path(b)} %>
+          </p>-->
 
+          <hr>
+         <!-- <script>
+              <%# if user_signed_in? %>
+              $('.ajaxful-rating').click(function(){
+                  new $.Zebra_Dialog('' +
+                          'Thanks for Rating', {
+                      'buttons':  false,
+                      'modal': false,
+                      'position': ['right - 20', 'top + 20'],
+                      'auto_close': 2000
+                  });
+                  location.reload()
+              })
+              <%# end  %>
 
-<script>
-  <% if user_signed_in? %>
-   $('.ajaxful-rating').click(function(){
-       new $.Zebra_Dialog('' +
-               'Thanks for Rating', {
-               'buttons':  false,
-               'modal': false,
-               'position': ['right - 20', 'top + 20'],
-               'auto_close': 2000
-           });
-       location.reload()
-   })
-  <% end  %>
+          </script>-->
 
-</script>
+      <% end %>
+  <% else %>
+      <% unless params[:search].blank? %>
+          <p>No search results found </p>
+      <% end %>
+  <% end %>
 
-    <% end %>
-<% else %>
-    <% unless params[:search].blank? %>
-    <p>No search results found </p>
-        <% end %>
-<% end %>
+</div>
