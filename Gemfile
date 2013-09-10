@@ -49,5 +49,6 @@ gem 'faker'
 gem 'ajaxful_rating' , '>= 3.0.0.beta7'
 
 gem 'will_paginate', '~> 3.0'
+gem 'will_paginate-bootstrap'
 
 

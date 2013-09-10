@@ -22,7 +22,7 @@
                       <div class="span5">
                         <blockquote style="border: 0">
                           <p>
-                          <h2><%=link_to b.name,  business_view_path(:id => "#{b.name}") %></h2>
+                          <%=link_to b.name,  business_view_path(:id => "#{b.name}") %>
                           </p>
                           <small><cite title="Source Title"><%= b.city %>, <%= b.state %>, <%= b.country %> <i class="icon-map-marker"></i></cite></small>
                         </blockquote>
@@ -68,7 +68,7 @@
           </script>-->
 
       <% end %>
-      <%= will_paginate @all_business %>
+      <%= will_paginate @all_business, renderer: BootstrapPagination::Rails  %>
   <% else %>
       <% unless params[:search].blank? %>
           <p>Sorry, No search results found ! </p>
@@ -76,3 +76,5 @@
   <% end %>
 
 </div>
+
+

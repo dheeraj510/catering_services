@@ -11,7 +11,6 @@ CateringServices::Application.routes.draw do
 
   devise_for :users,:controllers=>{:sessions => 'users/sessions',
                                    :registrations => 'users/registrations',
-                                   :passwords => 'users/passwords',
                                    :omniauth_callbacks => "users/omniauth_callbacks" } ,
              path_names: {sign_in: "login", sign_out: "logout"}
   devise_scope :user do
