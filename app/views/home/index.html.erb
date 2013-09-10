@@ -12,7 +12,7 @@
 
 <% unless @all_business.blank? %>
     <% @all_business.each do |b| %>
-        <h2><%=link_to b.name,  view_business_users_dashboard_path(b) %></h2>
+        <h2><%=link_to b.name,  business_view_path(:id => "#{b.name}") %></h2>
         <p>Response:
         <%= ratings_for b,:dimension => :response , :remote_options => {:url => rate_business_path(b)} %>
         </p>

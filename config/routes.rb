@@ -21,10 +21,10 @@ CateringServices::Application.routes.draw do
   end
 
   namespace :users do
-    resources :dashboard do
-      get 'view_business', :on => :member
-    end
+    resources :dashboard
+
   end
+  match "business/:id", to: 'users/dashboard#view_business', :as => 'business_view'
 
   devise_for :businesses ,:controllers=>{:sessions => 'businesses/sessions',
                                     :registrations => 'businesses/registrations'}

@@ -21,7 +21,7 @@ class Users::DashboardController < ApplicationController
   end
 
   def view_business
-    @business = Business.find(params[:id])
+    @business = Business.find_by_name(params[:id])
   end
 
   def choose
