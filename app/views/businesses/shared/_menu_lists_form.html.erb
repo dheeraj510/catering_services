@@ -1,5 +1,5 @@
 
-<%= form_for(@menu_list,:validate => true, :url => "", :html => { :class => "form-horizontal" }) do |f| %>
+<%= form_for(@menu_list, :url => "", :html => { :class => "form-horizontal" }) do |f| %>
     <%#= devise_error_messages! %>
 
     <fieldset>
@@ -139,5 +139,5 @@
 
 </script>
 
-<%= render '/layouts/calculator' %>
+<%= render '/businesses/shared/calculator' %>
 

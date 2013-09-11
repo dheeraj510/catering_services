@@ -20,9 +20,13 @@ CateringServices::Application.routes.draw do
   end
 
   namespace :users do
-    resources :dashboard
+    resources :dashboard do
+      get 'new_order_catalog', :on => :member
+    end
 
   end
+  match 'createCatalog' => 'users/dashboard#create_order_catalog'
+  match '/users/menuprice' => 'users/dashboard#menuprice'
   match "business/:id", to: 'users/dashboard#view_business', :as => 'business_view'
 
   devise_for :businesses ,:controllers=>{:sessions => 'businesses/sessions',

@@ -1,0 +1,22 @@
+<table class="display" id="menu_items">
+  <thead>
+  <tr>
+    <th></th>
+    <th>Item Name</th>
+    <th>Description</th>
+    <th>Type</th>
+    <th>Price</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <% @business.menus.each do |m| %>
+        <td><%= image_tag m.image.url(:thumb)  %></td>
+        <td><%= m.name %></td>
+        <td><%= m.description %></td>
+        <td><%= m.item_type %></td>
+        <td><%= m.price %></td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>

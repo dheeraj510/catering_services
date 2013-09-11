@@ -33,7 +33,8 @@
   <!-- For all other devices -->
   <!-- Size should be 32 x 32 pixels -->
   <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
-
+  <%= javascript_include_tag "application" %>
+  <%= ajaxful_rating_style %>
 </head>
 <body>
 
@@ -104,14 +105,17 @@
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span3">
-          <div class="sidebar-nav">
-            <ul class="nav nav-list bs-docs-sidenav">
-      <li class="active"><a href="/users/dashboard"><i class="icon-home"></i> Dashboard<i class="icon-chevron-right"></i></a></li>
-      <li><a href="/users/dashboard/<%= current_user.name %>/edit "><i class="icon-user"></i> Update Profile<i class="icon-chevron-right"></i></a></li>
-     <li><a href="/users/logout"  data-method="delete"><i class="icon-off"></i> Logout<i class="icon-chevron-right"></i></a></li>
-    </ul>
-          </div>
-        </div><!--/span-->
+      <div class="sidebar-nav">
+        <ul class="nav nav-list bs-docs-sidenav">
+        <% if params[:action] == "view_business" %>
+          <li class="active"><a href="#"><i class="icon-user"></i> View Business<i class="icon-chevron-right"></i></a></li>
+         <% end  %>
+          <li class = "<%= params[:action].eql?("index") ? 'active' : ''  %>"><a href="/users/dashboard"><i class="icon-home"></i> Dashboard<i class="icon-chevron-right"></i></a></li>
+          <li class="<%= params[:action].eql?("edit") ? 'active' : '' %>"><a href="/users/dashboard/<%= current_user.name %>/edit "><i class="icon-user"></i> Update Profile<i class="icon-chevron-right"></i></a></li>
+          <li><a href="/users/logout"  data-method="delete"><i class="icon-off"></i> Logout<i class="icon-chevron-right"></i></a></li>
+        </ul>
+      </div>
+    </div><!--/span-->
     <div class="span8">
       <%= bootstrap_flash %>
       <%= yield %>
@@ -123,15 +127,14 @@
 
 
 <footer>
-  <p>&copy; Company 2013</p>
+  <hr>
+  <%= render '/layouts/shared/footer' %>
 </footer>
-
 </div> <!-- /container -->
 
 <!-- Javascripts
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<%= javascript_include_tag "application" %>
-<%= ajaxful_rating_style %>
+
 </body>
 </html>

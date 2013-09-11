@@ -1,0 +1,59 @@
+<div class="accordion" id="accordion2">
+  <div class="">
+    <% @business.menu_lists.each do |list| %>
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= list.id %>">
+              <%= list.name %>   <span style="float :right"><%= list.created_at.strftime("%d-%m-%Y") %></span>
+            </a>
+          </div>
+          <div id="collapse<%= list.id %>" class="accordion-body collapse" style="height: 0px; ">
+            <div class="accordion-inner">
+
+              <table class="table">
+                <thead>
+                <tr>
+                  <th></th>
+                  <th>Item Name</th>
+                  <th>Description</th>
+                  <th>Type</th>
+                  <th>Price</th>
+                  <th style="width: 36px;"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <% @total = 0 %>
+                <% list.menu_ids.split(",").each do |id| %>
+                    <tr>
+                      <% @m = Menu.find(id) %>
+                      <td><%= image_tag @m.image.url(:small) %></td>
+                      <td><%= @m.name %></td>
+                      <td><%= @m.description %></td>
+                      <td><%= @m.item_type %></td>
+                      <td><%= @m.price %></td>
+                      <% @total += @m.price  %>
+                    </tr>
+                <% end %>
+                </tbody>
+              </table>
+              <hr>
+
+              <div style="float: right; text-align: right; margin-right: 50px">
+                Total = <strike><b><%= @total %></b></strike><br/>
+                Discount = <b><%= (@total - list.price).round(2) %></b>
+                <hr>
+                Total Amount After Discount = <b><%=  number_to_currency( list.price, :locale => 'en-IN')  %></b>
+              </div>
+              <% if user_signed_in? %>
+                    <%= link_to "Customize Menu Items With This Catalog", new_order_catalog_users_dashboard_path(list),class: "btn btn-danger" %>
+              <% else %>
+             <div style="color: red">
+              Please <%= link_to "Sign In", "#" %> As User to Customize And Order This Catalog !
+             </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>

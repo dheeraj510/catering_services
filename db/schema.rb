@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130906122951) do
+ActiveRecord::Schema.define(:version => 20130911140216) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -80,6 +80,16 @@ ActiveRecord::Schema.define(:version => 20130906122951) do
   add_index "businesses", ["email"], :name => "index_businesses_on_email", :unique => true
   add_index "businesses", ["reset_password_token"], :name => "index_businesses_on_reset_password_token", :unique => true
 
+  create_table "coupons", :force => true do |t|
+    t.string   "coupon_name"
+    t.integer  "discount"
+    t.string   "coupon"
+    t.boolean  "coupon_status", :default => false
+    t.integer  "business_id"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
+
   create_table "menu_lists", :force => true do |t|
     t.string   "name"
     t.text     "menu_ids"
@@ -101,6 +111,17 @@ ActiveRecord::Schema.define(:version => 20130906122951) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+  end
+
+  create_table "order_catalogs", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "business_id"
+    t.integer  "menulist_id"
+    t.text     "menu_ids"
+    t.float    "price"
+    t.text     "message"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "plans", :force => true do |t|

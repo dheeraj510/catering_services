@@ -44,7 +44,7 @@
 <%= nested_form_for(@business,:validate => true, :url => create_menu_businesses_dashboard_path(@business), :html => { :method => :put, :class => "form-horizontal" }) do |ff| %>
     <%= devise_error_messages! %>
     <% ff.fields_for :menus do |f| %>
-        <%= render 'form', :f => f %>
+        <%= render 'businesses/shared/form', :f => f %>
     <% end %>
     <p><%= ff.link_to_add " Add menu item", :menus,:class =>"sample-link-update icon-plus-sign"  %></p>
     <div><%= ff.submit "Update", :class => "btn btn-success", :id => "update-btn" %></div>

@@ -49,86 +49,14 @@
   <div class="tab-pane active" id="prices2">
     <br>
     <div class="well">
-      <table class="display" id="menu_items">
-        <thead>
-        <tr>
-          <th></th>
-          <th>Item Name</th>
-          <th>Description</th>
-          <th>Type</th>
-          <th>Price</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <% @business.menus.each do |m| %>
-              <td><%= image_tag m.image.url(:thumb)  %></td>
-              <td><%= m.name %></td>
-              <td><%= m.description %></td>
-              <td><%= m.item_type %></td>
-              <td><%= m.price %></td>
-              </tr>
-          <% end %>
-          </tbody>
-      </table>
+     <%= render '/users/shared/menu' %>
     </div>
 
   </div>
   <div class="tab-pane" id="features2">
     <br>
 
-    <div class="accordion" id="accordion2">
-      <div class="well">
-        <% @business.menu_lists.each do |list| %>
-            <div class="accordion-group">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= list.id %>">
-                  <%= list.name %>   <span style="float :right"><%= list.created_at.strftime("%d-%m-%Y") %></span>
-                </a>
-              </div>
-              <div id="collapse<%= list.id %>" class="accordion-body collapse" style="height: 0px; ">
-                <div class="accordion-inner">
-
-                  <table class="table">
-                    <thead>
-                    <tr>
-                      <th></th>
-                      <th>Item Name</th>
-                      <th>Description</th>
-                      <th>Type</th>
-                      <th>Price</th>
-                      <th style="width: 36px;"></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <% @total = 0 %>
-                    <% list.menu_ids.split(",").each do |id| %>
-                        <tr>
-                          <% @m = Menu.find(id) %>
-                          <td><%= image_tag @m.image.url(:small) %></td>
-                          <td><%= @m.name %></td>
-                          <td><%= @m.description %></td>
-                          <td><%= @m.item_type %></td>
-                          <td><%= @m.price %></td>
-                          <% @total += @m.price  %>
-                        </tr>
-                    <% end %>
-                    </tbody>
-                  </table>
-                  <hr>
-
-                  <div style="float: right; text-align: right; margin-right: 50px">
-                    Total = <strike><b><%= @total %></b></strike><br/>
-                    Discount = <b><%= (@total - list.price).round(2) %></b>
-                    <hr>
-                    Total Amount After Discount = <b><%=  number_to_currency( list.price, :locale => 'en-IN')  %></b>
-                  </div>
-                </div>
-              </div>
-            </div>
-        <% end %>
-      </div>
-    </div>
+    <%= render '/users/shared/menu_lists' %>
   </div>
   <div class="tab-pane" id="requests2">
     <br>

@@ -1,0 +1,138 @@
+<h2><%= @menu_list.name %></h2>
+<%= form_for(@order_catalog, :url => "", :html => { :class => "form-horizontal" }) do |f| %>
+    <%#= devise_error_messages! %>
+
+    <fieldset>
+      <!-- Address form -->
+
+
+      <!-- tandemSelect jQuery plugin - html block start -->
+      <div class='tandem-select-container'>
+
+        <!-- Source Div and Select Menu -->
+        <div class='tandem-select-src-div'>
+          All Items
+          <select multiple='multiple' class='tandem-select-src-select'>
+            <% @menu.each do |m| %>
+                <option  class="<%= (@menus.include? "#{m.id}") == true ? "tandem-select-option-disabled" : "" %>" value="<%= m.id %>"><%= m.name %>(<%= m.item_type %>)-<%= m.price %> </option>
+            <% end %>
+          </select>
+        </div>
+
+        <!-- Controls DIV, Buttons and Search box -->
+        <div class='tandem-select-controls-div'>
+          Controls
+          <br/> <br/>
+
+          <input type="button" class="tandem-select-move-to-src" value="&nbsp;&lt;&nbsp;" />
+          &nbsp; &nbsp;
+          <input type="button" class="tandem-select-move-to-dst" value="&nbsp;&gt;&nbsp;" />
+
+          <br/> <br/>
+          Search<br/>
+          <input type="text" class="tandem-select-search-src" size="15"/>
+        </div>
+
+        <!-- Destination Div and Select Menu -->
+        <div class='tandem-select-dst-div'>
+          Selected Items List
+          <select multiple='multiple' class='tandem-select-dst-select' id='selected-items' name='selected-menu'>
+            <% @price = 0 %>
+            <% @menus.each do |m| %>
+
+                <% mm = Menu.find(m) %>
+                <option value="<%= mm.id %>"><%= mm.name %>(<%= mm.item_type %>)-<%= mm.price %> </option>
+                <% @price = mm.price + @price %>
+            <% end %>
+          </select>
+          <div id="no_of_items"></div>
+          <div id="totalprice">
+            Total selected Items: <%= @menus.count %><br/>
+            Total Price: <%= @price %>
+            Total Price After Discount: <%= @price %>
+          </div>
+
+        </div>
+
+      </div>
+      <div style="clear: both;"></div>
+      <!-- tandemSelect jQuery plugin - html block end -->
+
+
+      <script type="text/javascript">
+          $(document).ready(function () {
+              $('#selected-items').tandemSelect();
+
+          });
+      </script>
+      <script>
+          $('.tandem-select-move-to-dst, .tandem-select-move-to-src ').click(function(){
+              setTimeout(function() {
+                  var item_value = [] ;
+                  var items = 0
+                  $("#selected-items>option").each(function(){
+                      item_value.push($(this).val());
+                      items ++
+                  }) ;
+
+
+                  $.post("/users/menuprice",{ id:item_value } ,function(data) {
+                      if(data=='false') { //if price not avaiable
+                          $("#totalprice").fadeTo(200,0.1,function() { //start fading the messagebox
+                              $(this).html('No Price').addClass('messageboxerror').fadeTo(900,1);
+                          });
+                      }else{
+                          $("#no_of_items").fadeTo(200,0.1,function() { //start fading the messagebox
+                              $(this).html('Total selected Items: ' + items).fadeTo(900,1);
+                          });
+                          $("#totalprice").fadeTo(200,0.1,function() { //start fading the messagebox
+                              $(this).html('Total Price: ' + data).addClass('messageboxerror').fadeTo(900,1);
+                          });
+                      }
+                  });
+
+
+              }, 100);
+
+          });
+
+
+
+      </script>
+    </fieldset>
+    <br/>
+    <div class="control-group">
+      <label class="control-label">Enter your Message</label>
+      <div class="controls">
+        <%= f.text_field :message,
+                         :validate => true,
+                         :type => "text",
+                         :placeholder =>"Enter Your Message"%>
+        <p class="help-block"></p>
+      </div>
+
+      <%= f.submit "Submit", :onclick => "return validateform();" %>
+    </div>
+<% end %>
+
+<script>
+    function validateform() {
+        alert('hi')
+        var item_value = [] ;
+        var message = $("order_catalog_message").val()
+
+        $("#selected-items>option").each(function(){
+            item_value.push($(this).val());
+        }) ;
+
+        $.post("/createCatalog",{ id:item_value,
+            business_id: <%= @menu_list.business %>,
+            menulist_id: <%= @menu_list.id %>, message: message  })
+
+        return false;
+
+
+    }
+
+</script>
+

@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
                   :provider, :facebook_uid, :linkedin_uid, :twitter_uid
   # attr_accessible :title, :body
 
+  has_many :order_catalogs
   ajaxful_rater
 
   class << self

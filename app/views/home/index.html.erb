@@ -1,5 +1,5 @@
 
-<div class="thumbnail center well well-small text-center">
+<div class=" center  text-center">
   <h2>Welcome !</h2>
   <p>Search For Business by Name of it.</p>
   <%= form_tag root_path,:html => {:id=>"custom-search-form", :class => "form-search form-horizontal pull-right"}, method: :get do %>
@@ -13,33 +13,34 @@
   <% end %>
 
   <% unless @all_business.blank? %>
+      <hr>
       <% @all_business.each do |b| %>
           <div class="row">
-                      <div class="span3">
-                        <%= image_tag b.avatar.url(:thumb) ,  :class => "img-thumbnail" %><br/>
+            <div class="span3">
+              <%= image_tag b.avatar.url(:thumb) ,  :class => "img-thumbnail" %><br/>
 
-                      </div>
-                      <div class="span5">
-                        <blockquote style="border: 0">
-                          <p>
+            </div>
+            <div class="span5">
+              <blockquote style="border: 0">
+                <p>
                           <%=link_to b.name,  business_view_path(:id => "#{b.name}") %>
                           </p>
-                          <small><cite title="Source Title"><%= b.city %>, <%= b.state %>, <%= b.country %> <i class="icon-map-marker"></i></cite></small>
-                        </blockquote>
+                <small><cite title="Source Title"><%= b.city %>, <%= b.state %>, <%= b.country %> <i class="icon-map-marker"></i></cite></small>
+              </blockquote>
 
-                        <i class="icon-envelope"> <%= b.email %></i> <br>
-                        <i class="icon-globe"></i> www.bootsnipp.com <br>
-                        <i class="icon-gift"></i> January 30, 1974
+              <i class="icon-envelope"> <%= b.email %></i> <br>
+              <i class="icon-globe"></i> www.bootsnipp.com <br>
+              <i class="icon-gift"></i> January 30, 1974
 
 
-                      </div>
-                      <div class="span3">
-                        <p>QR Code </p>
-                        <%= image_tag qr_code(100, "catering-services.herokuapp.com/business/#{b.name}") %>
+            </div>
+            <div class="span3">
+              <p>QR Code </p>
+              <%= image_tag qr_code(100, "catering-services.herokuapp.com/business/#{b.name}") %>
 
-                      </div>
+            </div>
 
-                    </div>
+          </div>
           <!--<p>Response:
             <%#= ratings_for b,:dimension => :response , :remote_options => {:url => rate_business_path(b)} %>
           </p>
@@ -71,6 +72,7 @@
       <%= will_paginate @all_business, renderer: BootstrapPagination::Rails  %>
   <% else %>
       <% unless params[:search].blank? %>
+          <hr>
           <p>Sorry, No search results found ! </p>
       <% end %>
   <% end %>

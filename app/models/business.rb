@@ -35,5 +35,7 @@ class Business < ActiveRecord::Base
       :size => { :in => 0..1.megabytes }
   ajaxful_rateable :stars => 10, :dimensions => [:taste, :response, :hospitality]
 
+  has_many :order_catalogs
+
 
 end
