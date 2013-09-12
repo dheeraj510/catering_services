@@ -1,0 +1,6 @@
+
+<% if @message.eql?('fail') %>
+$('#display_results').html("<%= escape_javascript(render '/users/shared/view_orders')%>");
+<% else %>
+$('#display_results').html("<%= escape_javascript(render '/users/shared/view_orders')%>");
+<% end %>

@@ -4,7 +4,7 @@
         <div class="accordion-group">
           <div class="accordion-heading">
             <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= list.id %>">
-              <%= MenuList.find(list.menulist_id).name %>
+              <%= list.business.name %>(<%= MenuList.find(list.menulist_id).name %>)
               <span style="float :right">
                 <% if list.price.nil? %>
                      <b style="color: red; text-decoration: blink">Discount not Updated Yet !</b>
@@ -61,6 +61,8 @@
                     Discount = <b><%= (@total - list.price).round(2) %></b>
                     <hr>
                     Total Amount After Discount = <b><%=  number_to_currency( list.price, :locale => 'en-IN')  %></b>
+                    <hr>
+                    <%= link_to "Check Out", "#", class: "btn btn-primary" %>
                 <% end %>
               </div>
 

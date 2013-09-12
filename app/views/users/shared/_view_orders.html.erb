@@ -1,0 +1,93 @@
+<% @orders.each do |list| %>
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= list.id %>">
+
+          <%= list.user.name %> | <%= MenuList.find(list.menulist_id).name %>
+
+          <% if list.price.nil? %>
+              <span class="label label-important">Price Not Updated Yet !</span>
+          <% else %>
+              <span class="label label-info">Price Updated</span>
+          <% end %>
+          <span style="float :right; color: grey" class="icon icon-time">
+               <%= time_ago_in_words(list.created_at)  %>
+             </span>
+        </a>
+      </div>
+      <div id="collapse<%= list.id %>" class="accordion-body collapse" style="height: 0px; ">
+        <div class="accordion-inner">
+          <p> From:
+            <%= list.user.name %>
+          </p>
+          <p> From:
+            <%= list.user.email %>
+          </p>
+          <p> Message:
+            <%= list.message %>
+          </p>
+          <hr>
+          <table class="table">
+            <thead>
+            <tr>
+              <th></th>
+              <th>Item Name</th>
+              <th>Description</th>
+              <th>Type</th>
+              <th>Price</th>
+              <th style="width: 36px;"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @total = 0 %>
+            <% @original_menus = MenuList.find(list.menulist_id).menu_ids.split(',') %>
+            <% list.menu_ids.split(",").each do |id| %>
+                <% @m = Menu.find(id) %>
+                <% if id.in? @original_menus %>
+                    <tr>
+                      <td><%= image_tag @m.image.url(:small) %></td>
+                      <td><%= @m.name %></td>
+                      <td><%= @m.description %></td>
+                      <td><%= @m.item_type %></td>
+                      <td><%= @m.price %></td>
+                      <% @total += @m.price  %>
+                    </tr>
+                <% else %>
+                    <tr style="background-color: green">
+                      <td><%= image_tag @m.image.url(:small) %></td>
+                      <td><%= @m.name %></td>
+                      <td><%= @m.description %></td>
+                      <td><%= @m.item_type %></td>
+                      <td><%= @m.price %></td>
+                      <% @total += @m.price  %>
+                    </tr>
+                <% end %>
+            <% end %>
+            </tbody>
+          </table>
+          <hr>
+
+
+
+          <div style="float: right; text-align: right; margin-right: 50px">
+            <% if list.price.nil? %>
+                Total = <b><%= @total %></b><br/>
+                <%= form_for(:price, :url => update_order_businesses_dashboard_path(list.id),:method => 'put') do |f| %>
+                    <p>
+                      Update Your Price : <%= f.text_field :price %>
+                    </p>
+                    <%= f.submit "Update" %>
+                <% end  %>
+            <% else %>
+                Total = <strike><b><%= @total %></b></strike><br/>
+                Discount = <b><%= (@total - list.price).round(2) %></b>
+                <hr>
+                Total Amount After Discount = <b><%=  number_to_currency( list.price, :locale => 'en-IN')  %></b>
+
+            <% end %>
+          </div>
+
+        </div>
+      </div>
+    </div>
+<% end %>

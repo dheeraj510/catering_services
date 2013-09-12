@@ -40,11 +40,14 @@ CateringServices::Application.routes.draw do
        put 'update_menu', :on => :member
        delete 'delete_menu', :on => :member
        get 'default_catering_service', :on => :collection
+       get 'view_orders', :on => :collection
+       put 'update_order', :on => :member
      end
-   end
+  end
 
   match 'membership', to: 'plans#membership'
   match 'menuprice' => 'businesses/dashboard#menuprice'
+  match 'ordersSort'=> 'businesses/dashboard#view_orders_sort'
 
   root :to => 'home#index'
 
@@ -57,3 +60,8 @@ CateringServices::Application.routes.draw do
   end
 
 end
+
+
+
+
+

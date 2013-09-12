@@ -1,0 +1,26 @@
+<div class="accordion" id="accordion2">
+  <div class="btn-group" style="margin-bottom: 10px">
+    <button id="all" class="btn">All</button>
+    <button id="no_price" class="btn">No Price Updates</button>
+    <button id="price" class="btn">Updated Orders</button>
+  </div>
+
+  <div id="display_results">
+    <%= render '/users/shared/view_orders'%>
+  </div>
+</div>
+
+<script>
+    $("#all").click(function(){
+      $.post("/ordersSort",{ status: 'all' })
+    }) ;
+    $("#no_price").click(function(){
+        $.post("/ordersSort",{ status: 'no_price' })
+    }) ;
+
+    $("#price").click(function(){
+        $.post("/ordersSort",{ status: 'price' })
+    }) ;
+
+
+</script>

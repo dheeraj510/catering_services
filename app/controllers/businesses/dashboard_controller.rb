@@ -25,7 +25,7 @@ class Businesses::DashboardController < ApplicationController
   def add_menu
     @business = current_business
     @menu_items = @business.menus
-  #  @business.menus.build
+    #  @business.menus.build
   end
 
   def create_menu
@@ -54,7 +54,7 @@ class Businesses::DashboardController < ApplicationController
       respond_to do |format|
         format.html {render :action => "edit_menu", :controller=>"businesses/dashboard"}
         format.json { render json: @menu.errors }
-       end
+      end
     end
   end
 
@@ -94,18 +94,45 @@ class Businesses::DashboardController < ApplicationController
   # menulist delete menu method when particular menu is deleted
   def menulist
     @menulist = current_business.menu_lists
-       @menulist.each do |m|
-         m.menu_ids.split(',').each do |i|
-           if i == params[:id]
-             @menu_ids = m.menu_ids.split(',')-i.split
-             if @menu_ids.count == 0
-              m.destroy
-             else
-             m.update_attribute(:menu_ids, @menu_ids.join(',') )
-             end
-           end
-         end
-       end
+    @menulist.each do |m|
+      m.menu_ids.split(',').each do |i|
+        if i == params[:id]
+          @menu_ids = m.menu_ids.split(',')-i.split
+          if @menu_ids.count == 0
+            m.destroy
+          else
+            m.update_attribute(:menu_ids, @menu_ids.join(',') )
+          end
+        end
+      end
+    end
+  end
+
+  def view_orders
+    @orders = current_business.order_catalogs.order('created_at desc')
+  end
+
+  def view_orders_sort
+    puts"################################################3",params[:status]
+    status = params[:status]
+    case status
+      when "all"
+        @orders = current_business.order_catalogs.order('created_at desc')
+      when "no_price"
+        @orders = current_business.order_catalogs.where(:price => nil).order('created_at desc')
+      when "price"
+        @orders = current_business.order_catalogs.where("price != ?", '').order('updated_at desc')
+    end
+    respond_to do |f|
+      f.js
+    end
+  end
+
+  def update_order
+    @order = OrderCatalog.find(params[:id])
+    if @order.update_attribute(:price,params[:price][:price])
+      redirect_to :back
+    end
   end
 
 end

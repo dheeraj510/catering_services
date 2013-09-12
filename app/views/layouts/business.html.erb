@@ -114,6 +114,7 @@
       <div class="sidebar-nav">
         <ul class="nav nav-list bs-docs-sidenav">
           <li class="<%=  params[:controller].eql?("businesses/dashboard") && params[:action].eql?("index") ? 'active' : '' %>"><a href="/businesses/dashboard"><i class="icon-home"></i> Dashboard <i class="icon-chevron-right"></i></a></li>
+          <li class="<%=  params[:action].eql?("view_orders") ? 'active' : '' %>"><a href="/businesses/dashboard/view_orders"><i class="icon-home"></i> Order Requests <i class="icon-chevron-right"></i></a></li>
           <li class="<%=  params[:action].eql?("add_menu") ? 'active' : '' %>"><a href="/businesses/dashboard/add_menu"><i class="icon-home"></i> Menu Items <i class="icon-chevron-right"></i></a></li>
           <li class="<%=  params[:controller].eql?("menu_lists") ? 'active' : '' %>"><a href="/menu_lists"><i class="icon-home"></i> My Menu Lists <i class="icon-chevron-right"></i></a></li>
           <li class="<%=  params[:action].eql?("default_catering_service") ? 'active' : '' %>"><a href="/businesses/dashboard/default_catering_service"><i class="icon-home"></i> Create catering Menu list <i class="icon-chevron-right"></i></a></li>
