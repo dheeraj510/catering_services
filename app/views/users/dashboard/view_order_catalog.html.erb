@@ -1,15 +1,25 @@
 <div class="accordion" id="accordion2">
   <div class="">
-    <% @business.menu_lists.each do |list| %>
+    <% @catalog.each do |list| %>
         <div class="accordion-group">
           <div class="accordion-heading">
             <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= list.id %>">
-              <%= list.name %>   <span style="float :right"><%= list.created_at.strftime("%d-%m-%Y") %></span>
+              <%= MenuList.find(list.menulist_id).name %>
+              <span style="float :right">
+                <% if list.price.nil? %>
+                     <b style="color: red; text-decoration: blink">Discount not Updated Yet !</b>
+                 <% else %>
+                    <b style="color: blue; text-decoration: blink">Discount Updated</b>
+                 <% end %>
+              </span>
             </a>
           </div>
           <div id="collapse<%= list.id %>" class="accordion-body collapse" style="height: 0px; ">
             <div class="accordion-inner">
-
+               <p> Your Message:
+                   <%= list.message %>
+               </p>
+              <hr>
               <table class="table">
                 <thead>
                 <tr>
@@ -38,19 +48,22 @@
               </table>
               <hr>
 
+
+
               <div style="float: right; text-align: right; margin-right: 50px">
-                Total = <strike><b><%= @total %></b></strike><br/>
-                Discount = <b><%= (@total - list.price).round(2) %></b>
-                <hr>
-                Total Amount After Discount = <b><%=  number_to_currency( list.price, :locale => 'en-IN')  %></b>
+                <% if list.price.nil? %>
+                    Total = <b><%= @total %></b><br/>
+                    <marquee style = "color: darkgoldenrod">
+                      <b>Wait for user to update Price And Availability</b>
+                    </marquee>
+                <% else %>
+                    Total = <strike><b><%= @total %></b></strike><br/>
+                    Discount = <b><%= (@total - list.price).round(2) %></b>
+                    <hr>
+                    Total Amount After Discount = <b><%=  number_to_currency( list.price, :locale => 'en-IN')  %></b>
+                <% end %>
               </div>
-              <% if user_signed_in? %>
-                    <%= link_to "Customize Menu Items With This Catalog", new_order_catalog_users_dashboard_path(list),class: "btn btn-danger" %>
-              <% else %>
-             <div style="color: red">
-              Please <%= link_to "Sign In", "#" %> or <%= link_to "Sign Up", "#" %> As User to Customize And Order This Catalog !
-             </div>
-              <% end %>
+
             </div>
           </div>
         </div>

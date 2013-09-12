@@ -35,7 +35,7 @@ class Users::DashboardController < ApplicationController
 
   def create_order_catalog
     if params[:message].blank? || params[:business_id].blank?
-          @text = "List name can't be blank and select atleast one item."
+          @text = "Message can't be blank"
           @message = "fail"
         else
           @menu_id = []
@@ -58,21 +58,8 @@ class Users::DashboardController < ApplicationController
         end
   end
 
-  def menuprice
-    @totalprice = 0
-    if params[:id].blank?
-      @totalprice = 0
-    else
-      params[:id].each do |id|
-        @price = Menu.find(id).price
-        @totalprice += @price
-      end
-    end
-    if @totalprice
-      render :text => @totalprice, :layout => false
-    else
-      render :text => false, :layout => false
-    end
+  def view_order_catalog
+    @catalog = OrderCatalog.all
   end
 
   def choose

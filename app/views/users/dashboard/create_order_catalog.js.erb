@@ -2,5 +2,5 @@
 $('#list-message').html("<%= escape_javascript(@text)%>").addClass('alert-error');
 <% else %>
 $('#list-message').html("<%= escape_javascript(@text)%>").addClass('alert-success').removeClass('alert-error');
-$(window.location.replace("/"));
+$(window.location.replace("/users/dashboard/view_order_catalog"));
 <% end %>

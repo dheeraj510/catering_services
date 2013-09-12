@@ -4,7 +4,7 @@
 
     <fieldset>
       <!-- Address form -->
-
+      <div id="list-message"></div> <br/>
 
       <!-- tandemSelect jQuery plugin - html block start -->
       <div class='tandem-select-container'>
@@ -48,8 +48,9 @@
           <div id="no_of_items"></div>
           <div id="totalprice">
             Total selected Items: <%= @menus.count %><br/>
-            Total Price: <%= @price %>
-            Total Price After Discount: <%= @price %>
+            Total Price: <%= @price.round(2) %> <br/>
+            Discount Price: <%= @menu_list.price %>
+
           </div>
 
         </div>
@@ -76,7 +77,7 @@
                   }) ;
 
 
-                  $.post("/users/menuprice",{ id:item_value } ,function(data) {
+                  $.post("/menuprice",{ id:item_value } ,function(data) {
                       if(data=='false') { //if price not avaiable
                           $("#totalprice").fadeTo(200,0.1,function() { //start fading the messagebox
                               $(this).html('No Price').addClass('messageboxerror').fadeTo(900,1);
@@ -111,26 +112,25 @@
         <p class="help-block"></p>
       </div>
 
-      <%= f.submit "Submit", :onclick => "return validateform();" %>
+      <%= f.submit "Sent This TO Business For Final Price And Order",class: "btn btn-primary", :onclick=>"return myFunction();" %>
     </div>
 <% end %>
 
 <script>
-    function validateform() {
-        alert('hi')
+    function myFunction() {
+
         var item_value = [] ;
-        var message = $("order_catalog_message").val()
+        var message = $("#order_catalog_message").val();
 
         $("#selected-items>option").each(function(){
             item_value.push($(this).val());
         }) ;
-
         $.post("/createCatalog",{ id:item_value,
-            business_id: <%= @menu_list.business %>,
-            menulist_id: <%= @menu_list.id %>, message: message  })
+                   business_id: <%= @menu_list.business.id %>,
+                   menulist_id: <%= @menu_list.id %>, message: message  });
+
 
         return false;
-
 
     }
 

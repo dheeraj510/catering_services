@@ -107,10 +107,14 @@
     <div class="span3">
       <div class="sidebar-nav">
         <ul class="nav nav-list bs-docs-sidenav">
-        <% if params[:action] == "view_business" %>
-          <li class="active"><a href="#"><i class="icon-user"></i> View Business<i class="icon-chevron-right"></i></a></li>
-         <% end  %>
+          <% if params[:action] == "view_business" %>
+              <li class="active"><a href="#"><i class="icon-user"></i> View Business<i class="icon-chevron-right"></i></a></li>
+          <% end  %>
+          <% if params[:action] == "new_order_catalog" %>
+              <li class="active"><a href="#"><i class="icon-user"></i> Create Catalog & Order<i class="icon-chevron-right"></i></a></li>
+          <% end  %>
           <li class = "<%= params[:action].eql?("index") ? 'active' : ''  %>"><a href="/users/dashboard"><i class="icon-home"></i> Dashboard<i class="icon-chevron-right"></i></a></li>
+          <li class = "<%= params[:action].eql?("view_order_catalog") ? 'active' : ''  %>"><a href="/users/dashboard/view_order_catalog"><i class="icon-home"></i>View Your Customized Catalog<i class="icon-chevron-right"></i></a></li>
           <li class="<%= params[:action].eql?("edit") ? 'active' : '' %>"><a href="/users/dashboard/<%= current_user.name %>/edit "><i class="icon-user"></i> Update Profile<i class="icon-chevron-right"></i></a></li>
           <li><a href="/users/logout"  data-method="delete"><i class="icon-off"></i> Logout<i class="icon-chevron-right"></i></a></li>
         </ul>
