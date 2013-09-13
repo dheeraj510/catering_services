@@ -1,0 +1,12 @@
+<% if @location.nil? %>
+
+    <a class="btn btn-small btn-primary" data-toggle="modal" href="#change_location" >Select Location</a>
+
+    <%= render '/home/location_form' %>
+
+<% else  %>
+    <span>Your current Location Set To <b style="color: darkgoldenrod">"<%= @location.capitalize() %>"</b></span>
+    <a class="btn btn-small btn-danger" data-toggle="modal" href="#change_location" >Change Location?</a>
+
+    <%= render '/home/location_form' %>
+<% end  %>

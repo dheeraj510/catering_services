@@ -50,6 +50,7 @@ CateringServices::Application.routes.draw do
   match 'ordersSort'=> 'businesses/dashboard#view_orders_sort'
 
   root :to => 'home#index'
+  match "city" => 'home#set_cookie'
 
   resources :menu_lists , :only => [:index, :edit]
   match 'menuids' => 'menu_lists#create'
