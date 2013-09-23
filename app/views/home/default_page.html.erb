@@ -1,0 +1,141 @@
+
+<script>
+    $(document).ready(function() {
+
+        var id = '#dialog';
+
+        //Get the screen height and width
+        var maskHeight = $(document).height();
+        var maskWidth = $(window).width();
+
+        //Set heigth and width to mask to fill up the whole screen
+        $('#mask').css({'width':maskWidth,'height':maskHeight});
+
+        //transition effect
+        $('#mask').fadeIn(1000);
+        $('#mask').fadeTo("slow",0.8);
+
+        //Get the window height and width
+        var winH = $(window).height();
+        var winW = $(window).width();
+
+        //Set the popup window to center
+        $(id).css('top',  winH/2-$(id).height()/2);
+        $(id).css('left', winW/2-$(id).width()/2);
+
+        //transition effect
+        $(id).fadeIn(2000);
+
+        //if close button is clicked
+        $('.window .close').click(function (e) {
+            //Cancel the link behavior
+            e.preventDefault();
+
+            $('#mask').hide();
+            $('.window').hide();
+        });
+
+        //if mask is clicked
+        $('#mask').click(function () {
+            $(this).hide();
+            $('.window').hide();
+        });
+
+    });
+
+    if (once_per_session==0)
+        loadpopunder()
+    else
+    {
+        if (get_cookie('popunder')==''){
+            loadpopunder()
+            document.cookie="popunder=yes"
+        }
+    }
+    //Pop-under window II- By JavaScript Kit
+    //Credit notice must stay intact for use
+    //Visit http://javascriptkit.com for this script
+
+    //Pop-under only once per browser session? (0=no, 1=yes)
+    //Specifying 0 will cause popunder to load every time page is loaded
+    var once_per_session=1
+
+
+</script>
+
+
+<style type="text/css">
+
+    #mask {
+        position:absolute;
+        left:0;
+        top:0;
+        z-index:9000;
+        background-color:#000;
+        display:none;
+    }
+    #boxes .window {
+        position:absolute;
+        left:0;
+        top:0;
+
+        display:none;
+        z-index:9999;
+        padding:20px;
+    }
+    #boxes #dialog {
+
+        padding:10px;
+        background-color:#ffffff;
+    }
+</style>
+
+<div id="boxes">
+  <div style="top: 199.5px; left: 551.5px; display: none;" id="dialog" class="window">
+    <div class="modal-header">
+          <h3>Catering Services Choose Location</h3>
+    </div>
+
+    <div class="modal-body">
+       <h4 style="color: darkcyan">For Better Search Result Please Choose Your Location to Continue .... </h4>
+      <br/>
+      <br/>
+      <%= form_tag( "/city", :method => 'put') do  %>
+          <p>
+            <% if @location.nil? %>
+                <span>Enter Your Location</span>
+            <% else %>
+                <span>Change Location</span>
+            <% end %>
+            <%= select("city","city",Home::CITY, {include_blank: true, prompt: 'Please select Your city' }) %>
+          </p>
+
+          </div>
+          <br/>
+          <div class="modal-footer">
+
+            <button type="submit" class="btn btn-primary">Choose..</button>
+
+          </div>
+      <% end  %>
+      </div>
+  <!-- Mask to cover the whole screen -->
+  <div style="width: 1478px; height: 602px; display: none; opacity: 0.8;" id="mask"></div>
+</div>
+
+
+<!--Error page-->
+
+<style>
+    .center {text-align: center; margin-left: auto; margin-right: auto; margin-bottom: auto; margin-top: auto;}
+</style>
+
+<div class="hero-unit center">
+  <h1>Please Choose Location <small><font face="Tahoma" color="red">Location Error</font></small></h1>
+  <br />
+  <p>The page you requested could not be found, either contact your webmaster or try again. Use your browsers <b>Back</b> button to navigate to the page you have prevously come from</p>
+  <p><b>Or you could just press this neat little button:</b></p>
+  <a href="/" class="btn btn-large btn-info"><i class="icon-home icon-white"></i> Choose Location</a>
+</div>
+<br />
+

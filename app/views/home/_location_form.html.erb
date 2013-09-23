@@ -1,7 +1,11 @@
 <div class="modal hide" id="change_location">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal">x</button>
-    <h3>Login to CateringServicesOnline.in.com</h3>
+    <% if @location.nil? %>
+        <h3>Please choose your Location</h3>
+        <% else %>
+    <h3>Your current Location Is <span style="color: darkgoldenrod"><%= @location %></span></h3>
+        <% end %>
   </div>
   <div class="modal-body">
     <!--<form method="post" action='' name="login_form">
@@ -12,8 +16,13 @@
       </p>
     </form>-->
     <%= form_tag( "/city", :method => 'put') do  %>
-        <p><span>Enter Your Location</span>
-        <%= text_field_tag :city %>
+        <p>
+          <% if @location.nil? %>
+          <span>Enter Your Location</span>
+          <% else %>
+              <span>Change Location</span>
+            <% end %>
+         <%= select("city","city",Home::CITY, {include_blank: true, prompt: 'Please select Your city' }) %>
         </p>
 
   </div>
