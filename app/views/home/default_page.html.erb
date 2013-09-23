@@ -107,7 +107,8 @@
             <% else %>
                 <span>Change Location</span>
             <% end %>
-            <%= select("city","city",Home::CITY, {include_blank: true, prompt: 'Please select Your city' }) %>
+
+            <%= select("city","city",Home::CITY, {include_blank: false}) %>
           </p>
 
           </div>
