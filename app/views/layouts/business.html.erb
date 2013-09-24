@@ -122,6 +122,23 @@
           <li class="<%=  params[:controller].eql?("businesses/registrations") && params[:action].eql?("edit") ? 'active' : '' %>"><a href="/businesses/edit "><i class="icon-user"></i> Change Password<i class="icon-chevron-right"></i></a></li>
           <li><a href="/businesses/sign_out"  data-method="delete"><i class="icon-off"></i> Logout<i class="icon-chevron-right"></i></a></li>
         </ul>
+        <!--<a href="#dashboard-menu" class="nav-header" data-toggle="collapse"><i class="icon-dashboard"></i>Dashboard</a>
+        <ul id="dashboard-menu" class="nav nav-list collapse in">
+          <li><a href="index.html">Home</a></li>
+          <li ><a href="users.html">Sample List</a></li>
+          <li ><a href="user.html">Sample Item</a></li>
+          <li ><a href="media.html">Media</a></li>
+          <li ><a href="calendar.html">Calendar</a></li>
+
+        </ul>
+
+        <a href="#accounts-menu" class="nav-header" data-toggle="collapse"><i class="icon-briefcase"></i>Account<span class="label label-info">+3</span></a>
+        <ul id="accounts-menu" class="nav nav-list collapse">
+          <li ><a href="sign-in.html">Sign In</a></li>
+          <li ><a href="sign-up.html">Sign Up</a></li>
+          <li ><a href="reset-password.html">Reset Password</a></li>
+        </ul>-->
+
       </div>
     </div><!--/span-->
     <div class="span8">
@@ -132,10 +149,10 @@
 
 
 
-<footer>
-   <hr>
-   <%= render '/layouts/shared/footer' %>
- </footer>
+  <footer>
+    <hr>
+    <%= render '/layouts/shared/footer' %>
+  </footer>
 
 </div> <!-- /container -->
 
