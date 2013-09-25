@@ -7,7 +7,7 @@
     box-sizing: border-box;
 
     /* Better text styling */
-    font: bold 14px Arial, sans-serif;
+    font: bold 14px/18px "Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,Verdana,sans-serif;
     line-height: 24px;
 }
 
@@ -23,7 +23,7 @@
 html {
     height: 100%;
     background: white;
-    background: radial-gradient(circle, #fff 20%, #ccc);
+    background: radial-gradient(circle, #fff 20%, #000);
     background-size: cover;
 }
 
@@ -350,5 +350,48 @@ div.field_with_errors div.ui-effects-wrapper {
 .top span.clear:active {
     top: 4px;
     box-shadow: 0px 0px #d3545d;
+}
+
+
+/* Custom Styles */
+body {
+    background-color: #3D3D3D;
+    color: #767676;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    color: #BEBEBE;
+}
+.modal {
+    background-clip: padding-box;
+    background-color: #EDEDED;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    left: 50%;
+    margin-left: -280px;
+    outline: medium none;
+    position: fixed;
+    top: 10%;
+    width: 560px;
+    z-index: 1050;
+}
+
+.search_result a{
+    font-size: 20px;
+}
+
+.table {
+    color: #FFFFFF;
+}
+
+.table th{
+    color: lightgoldenrodyellow;
+    font-size: 20px;
 }
 

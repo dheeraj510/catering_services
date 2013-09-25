@@ -1,4 +1,4 @@
-<%= render '/home/location' %>
+
 <div class=" center  text-center">
   <h2>Welcome !</h2>
   <p>Search For Business by Name of it.</p>
@@ -16,29 +16,14 @@
       <hr>
       <% @all_business.each do |b| %>
           <div class="row">
-            <div class="span3">
-              <%= image_tag b.avatar.url(:thumb) ,  :class => "img-thumbnail" %><br/>
+
+            <div class=" search_result">
+              <p id = "view_details_<%= b.id %>">
+                <%= link_to b.name,  business_view_path(:id => "#{b.name}") %>
+              </p>
 
             </div>
-            <div class="span5">
-              <blockquote style="border: 0">
-                <p>
-                          <%=link_to b.name,  business_view_path(:id => "#{b.name}") %>
-                          </p>
-                <small><cite title="Source Title"><%= b.city %>, <%= b.state %>, <%= b.country %> <i class="icon-map-marker"></i></cite></small>
-              </blockquote>
 
-              <i class="icon-envelope"> <%= b.email %></i> <br>
-              <i class="icon-globe"></i> www.bootsnipp.com <br>
-              <i class="icon-gift"></i> January 30, 1974
-
-
-            </div>
-            <div class="span3">
-              <p>QR Code </p>
-              <%= image_tag qr_code(100, "catering-services.herokuapp.com/business/#{b.name}") %>
-
-            </div>
 
           </div>
           <!--<p>Response:
@@ -52,7 +37,7 @@
           </p>-->
 
           <hr>
-         <!-- <script>
+          <!-- <script>
               <%# if user_signed_in? %>
               $('.ajaxful-rating').click(function(){
                   new $.Zebra_Dialog('' +
@@ -68,6 +53,26 @@
 
           </script>-->
 
+          <!-- Hover card Script-->
+
+          <script>
+              $(document).ready(function () {
+                  var hoverHTMLDemoBasic = '<br>'+'<blockquote style="border: 0">' +
+
+                          '<small>'+'<cite title="Source Title">'+'<%= b.city %>'+','+ '<%= b.state %>'+','+ '<%= b.country %>'+ '<i class="icon-map-marker">'+'</i>'+'</cite>'+'</small>'+
+                          '</blockquote>'  +
+
+                          '<i class="icon-envelope">'+ '<%= b.email %>'+'</i>'+ '<br>'+
+                          '<i class="icon-globe">'+'</i>' +'www.bootsnipp.com'+ '<br>' +
+                          '<i class="icon-gift">'+'</i>'+ 'January 30, 1974'
+
+                  $("#view_details_<%= b.id %>").hovercard({
+                      detailsHTML: hoverHTMLDemoBasic,
+                      width: 400,
+                      cardImgSrc: '<%= b.avatar.url %>'
+                  });
+              });
+          </script>
       <% end %>
       <%= will_paginate @all_business, renderer: BootstrapPagination::Rails  %>
   <% else %>
@@ -78,5 +83,6 @@
   <% end %>
 
 </div>
+
 
 
